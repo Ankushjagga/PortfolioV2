@@ -1,0 +1,26 @@
+.headerNav ,  .logoNav{
+    margin: 1rem;
+    padding: .5rem;
+    font-size: 1.5rem;
+    
+}
+.headerNav:hover , .actives{
+    color: var(--rootColor);
+}
+.logoNav{
+    color: var(--rootColor);
+    font-size: 2.5rem;
+}
+.nav{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    background-color: #000;
+    background-color: rgb(0 0 0 / var(.2));
+   position: sticky;
+}
+.fa-solid{
+    margin: 0 1rem;
+}

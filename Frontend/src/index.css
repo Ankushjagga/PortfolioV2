@@ -1,0 +1,210 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --rootColor :#c289c7b9
+}
+
+body{
+color: white;
+background-color: #0a0a0a;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    
+}
+*::selection{
+  background:#c289c7b9;
+  color:#333;
+}
+
+html{
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar{
+  width:1.4rem;
+}
+
+html::-webkit-scrollbar-track{
+  background:rgb(61, 58, 58);
+}
+
+html::-webkit-scrollbar-thumb{
+  background:#c289c7b9;
+}
+
+
+*{
+  cursor: none !important;
+  text-decoration: none;
+  outline: none;
+   border:none;
+  text-transform: capitalize;
+  transition: all .2s linear;
+}
+a{
+  outline: none;
+  text-decoration: none!important;
+  color: inherit;
+}
+
+.fa-linkedin{
+  color: #0a66c2;
+}
+.fa-github{
+  color: white;
+}
+.fa-facebook{
+  color: #4267B2;
+}
+.fa-instagram{
+  color:  palevioletred;
+}
+.fa-c{
+  color: #4267B2;
+
+}
+.fa-node{
+  color: green;
+}
+.fa-database{
+  color: greenyellow;
+}
+.fa-html5{
+  color: #f06529;
+}
+.fa-css3-alt{
+  color: #2965f1;
+}
+.fa-js{
+  color: yellow;
+}
+.fa-react{
+  color: #61DBFB;
+}
+.fa-git-alt{
+ color: #F1502F;
+}
+
+.typing{
+    font-size: 24px;
+   
+}
+.marquee{
+  padding: 1rem;
+  margin: 1rem;
+}
+.marqueeImg{
+  padding: 0 8rem;
+  width: 25vw;
+  height: 30vh;
+  border-radius: 1rem;
+}
+.marqueetext{
+  padding: 0 10rem;
+}
+
+.marqueeIcon{
+  padding: 0 2rem;
+  display: flex;
+  gap: 20rem;
+  font-size: 3rem;
+opacity: .4;
+}
+
+.typing{
+  text-align: center;
+    height: 70px;
+    font-size: 2rem;
+}
+.quote{
+  text-align: center;
+  height: 130px;
+  font-size: 2rem;
+  opacity: .6;
+}
+.profileImage{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.profile{
+  height: 40vh;
+  width: 20vw;
+  border-radius: 20rem;
+  margin: 2rem;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid #c289c7b9;
+  text-align: center;
+  box-shadow: #c289c7b9 -5px 5px 15px ;
+
+}
+.profile:hover{
+  transform: scale(1.06);
+
+
+}
+.about{
+  text-align: center;
+  font-size: 4rem;
+  border-top: 1px solid var(--rootColor);
+ padding-top: 3rem;
+}
+.react-terminal-line{
+  padding:1rem ;
+}
+
+.react-terminal-line:nth-child(odd){
+  color: var(--rootColor);
+}
+.react-terminal-wrapper {
+  background: #000000!important;
+  width : 60% !important;
+  margin : 2rem !important;
+}
+.terminal-wraper{
+display: flex;
+justify-content: center;
+}
+
+.content{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+.infos{
+  display: flex;
+  justify-content: space-around;
+}
+.heading{
+  text-decoration: underline;
+  opacity: .6;
+  margin-right: 5rem;
+}
+.infos>a{
+  padding: 1rem;
+  font-size: 1.4rem;
+}
+.infos>a:hover{
+color: var(--rootColor);
+}
+#feel{
+  margin: 1.5rem;
+  opacity: .6;
+}
+.fa-brands , .fas{
+  margin: 0 1rem;
+}
+.headColor{
+  color: var(--rootColor);
+}

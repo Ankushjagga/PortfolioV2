@@ -1,0 +1,33 @@
+.footer{
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.5rem;
+    color: white;
+    background-color: black;
+    padding: .5rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.footer>h4{
+    margin: 2rem;
+}
+.foo-connect i{
+    padding:  0 1rem;
+    color:#c289c7b9;
+
+}
+.connect{
+    /* display: flex; */
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    color: white;
+
+}
+.connect h1{
+    margin: 1rem;
+}
+.links-connect i {
+    padding:  0 1rem;
+    font-size: 2.5rem;
+}
