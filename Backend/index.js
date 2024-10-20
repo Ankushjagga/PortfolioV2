@@ -5,10 +5,13 @@ const app = express();
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
 const connect = require("./db/connection");
+const cors = require("cors")
+
 const cookieParser = require("cookie-parser")
 
 app.use(express.urlencoded({extended : true}))
 app.use(express.json());
+app.use(cors())
 // app.use(cookieParser)
 app.use("/auth", authRoutes)
 app.use("/user", userRoutes )

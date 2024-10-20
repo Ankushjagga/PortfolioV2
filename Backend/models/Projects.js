@@ -13,7 +13,7 @@ const Project = new mongoose.Schema({
         type : String
     },
      languages : {
-        type : String,  
+        type : Array,  
     },
   
 },   { timestamps: true })

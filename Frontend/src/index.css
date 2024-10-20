@@ -24,7 +24,7 @@ height: 100%;
 
 html{
   font-size: 62.5%;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   scroll-behavior: smooth;
 }
 
@@ -53,7 +53,10 @@ a{
   outline: none;
   text-decoration: none!important;
   color: inherit;
+  cursor: pointer !important; 
 }
+
+
 
 .fa-linkedin{
   color: #0a66c2;
@@ -141,7 +144,7 @@ opacity: .4;
   width: 20vw;
   border-radius: 20rem;
   margin: 2rem;
-  overflow: hidden;
+  /* overflow: hidden; */
   cursor: pointer;
   border: 2px solid #c289c7b9;
   text-align: center;
@@ -198,13 +201,131 @@ justify-content: center;
 .infos>a:hover{
 color: var(--rootColor);
 }
-#feel{
-  margin: 1.5rem;
-  opacity: .6;
-}
+
 .fa-brands , .fas{
   margin: 0 1rem;
 }
 .headColor{
   color: var(--rootColor);
+}
+.nodejs{
+  color: #215732;
+}
+.css{
+ color: #264de4
+}
+.mongodb{
+ color:  #4DB33D
+}
+/* .hr{
+  border: none;
+  border-left: 2px solid #fff; 
+  height: 150px; 
+  margin-left: 36px;
+} */
+.experineceInner{
+  flex-direction: column;
+}
+
+.expImg{
+  border-radius: 100rem;
+  width: 90px;
+  margin: 0 1rem;
+}
+.exp{
+  display: flex;
+}
+.contactInfo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+}
+.gokuDiv{
+display: flex;
+justify-content: center;
+width: 50%;
+}
+.gokuImg{
+  height: 60vh;
+  -webkit-animation: mover 2s infinite  alternate;
+  animation: mover 2s infinite  alternate;
+  margin: 2rem;
+}
+
+
+@-webkit-keyframes mover {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+@keyframes mover {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+.inputBox{
+  padding: 1rem;
+  background: transparent;
+  outline: auto;
+  width: 30vw;
+  margin: 1rem 3rem;
+  color: white;
+}
+.contactInput{
+  display: flex;
+  flex-direction: column;
+  justify-content:baseline;
+  text-align: center;
+}
+.contactBtn{
+align-self: center;
+text-align: center;
+}
+.btn:active{
+
+  transform: translateY(6px);
+}
+
+
+
+
+
+#feel{
+  margin: 1.5rem;
+  opacity: .6;
+  text-align: center; 
+
+}
+.expDetail {
+  display: flex;
+  justify-content: center; 
+  margin: 20px 0; 
+}
+
+.experineceInner {
+  display: flex;
+  align-items: center; 
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 800px; 
+  padding: 20px; 
+  border: 1px solid rgba(255, 255, 255, 0.1); 
+}
+
+
+
+
+
+.exp h1 {
+  font-size: 18px; 
+  margin: 0;
+}
+
+.description {
+  margin-top: 10px; 
+  font-size: 14px; 
+}
+
+ul.description li {
+  line-height: 1.5; 
 }

@@ -65,7 +65,7 @@ const Header = () => {
       )
     })}
   
-    <NavLink to="/okk" target='_blank' className={'headerNav'}><i className="fa-solid fa-download"></i>   Resume</NavLink>
+    <NavLink to="/okk"  className={'headerNav'}><i className="fa-solid fa-download"></i>   Resume</NavLink>
     </div>
   )
 }

@@ -30,6 +30,100 @@ try {
 }
 
 
+const getAllSkills = async (req,res)=>{
+    let resObj = {
+        isSuccess : false,
+        data : null,
+        message : ""
+    }
+
+try {
+    // const data = await messagesModel.find({}).populate("userId", "name email")
+    const data = await SkillsModel.find({})
+    resObj.isSuccess = true
+    resObj.data = data
+    resObj.message = "skills fetch successfully"
+    return res.status(200).send(resObj)
+} catch (error) {
+    resObj.message = error.message
+    return res.status(500).send(resObj)
+}
+
+}
+
+
+const getAllEducation = async (req,res)=>{
+    let resObj = {
+        isSuccess : false,
+        data : null,
+        message : ""
+    }
+
+try {
+    // const data = await messagesModel.find({}).populate("userId", "name email")
+    const data = await educationModel.find({})
+    resObj.isSuccess = true
+    resObj.data = data
+    resObj.message = "education fetch successfully"
+    return res.status(200).send(resObj)
+} catch (error) {
+    resObj.message = error.message
+    return res.status(500).send(resObj)
+}
+
+}
+
+
+
+const getAllProjects = async (req,res)=>{
+    let resObj = {
+        isSuccess : false,
+        data : null,
+        message : ""
+    }
+
+try {
+    // const data = await messagesModel.find({}).populate("userId", "name email")
+    const data = await projectModel.find({})
+    console.log(data);
+    
+    resObj.isSuccess = true
+    resObj.data = data
+    resObj.message = "project fetch successfully"
+    return res.status(200).send(resObj)
+} catch (error) {
+    resObj.message = error.message
+    console.log(error);
+    
+    return res.status(500).send(resObj)
+}
+
+}
+
+const getAllExperience = async (req,res)=>{
+    let resObj = {
+        isSuccess : false,
+        data : null,
+        message : ""
+    }
+
+try {
+    // const data = await messagesModel.find({}).populate("userId", "name email")
+    const data = await experienceModel.find({})
+    resObj.isSuccess = true
+    resObj.data = data
+    resObj.message = "experience fetch successfully"
+    return res.status(200).send(resObj)
+} catch (error) {
+    resObj.message = error.message
+    return res.status(500).send(resObj)
+}
+
+}
+
+
+
+
 
 const addMessages = async (req,res)=>{
     let resObj = {
@@ -114,6 +208,8 @@ try {
 }
 
 
+
+
 const addSkills = async (req,res)=>{
     let resObj = {
         isSuccess : false,
@@ -180,6 +276,8 @@ const addExpericence = async (req,res)=>{
     try {
 
         const {description , company , year , role , startDate , endDate} = req.body
+        console.log(req.body);
+        
        const data = await new  experienceModel({
         company, year , description, role , startDate,endDate
        })
@@ -192,6 +290,8 @@ res.status(200).send(resObj)
         
     } catch (error) {
         resObj.message = error.message
+        console.log(error);
+        
         return res.status(500).send(resObj)
     }
 }
@@ -206,9 +306,9 @@ const addProjects = async (req,res)=>{
 
     try {
 
-        const {description , name  , image, language} = req.body
+        const {description , name  , image, languages} = req.body
        const data = await new  projectModel({
-        name, image , description, language
+        name, image , description, languages
        })
        await data.save()
        resObj.isSuccess = true
@@ -226,6 +326,10 @@ res.status(200).send(resObj)
 
 module.exports = {
     getAllUser,
+    getAllEducation,
+    getAllExperience,
+    getAllProjects,
+    getAllSkills,
     addMessages,
     getAllUserMessages,
     addSkills,

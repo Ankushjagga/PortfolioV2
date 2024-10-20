@@ -4,16 +4,31 @@ import Footer from "./components/Footer/Footer"
 import Home from "./Pages/Home"
 import About from "./Pages/About"
 import {CustomCursor} from "./Utilis/CustomCursor"
+import Projects from "./Pages/Projects"
+import Experience from "./Pages/Experience"
+import Skills from "./Pages/Skills"
+import Education from "./Pages/Education"
+import Contact from "./Pages/Contact"
+import Error from "./Pages/Error"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
 
   return (
     <>
 
    <CustomCursor/>
-
+<ToastContainer/>
   <Header/> 
   <Home/>
   <About/>
+  <Projects/>
+  <Experience/>
+  <Skills/>
+  <Education/>
+  <Contact/>
+  <Error/>
   <Footer/>
     </>
   )

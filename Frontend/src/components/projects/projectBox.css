@@ -1,0 +1,81 @@
+.portfolio .box-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding:2rem 0;
+}
+
+.portfolio .box-container .box{
+    height: 50vh;
+    width: 70%;
+    border-radius: 1rem;
+    margin:2rem;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid #c289c7b9;
+    text-align: center;
+    box-shadow: #c289c7b9 0px 5px 15px;
+display: flex;
+}
+#feel{
+    letter-spacing: 6px;
+    margin: 4rem;
+}
+.box h1, .box a{
+    color: white;
+    font-size: 2rem;
+}
+.box p{
+    color: white;
+    font-size: 1.5rem;
+    line-height: 3rem;
+    padding: 0 1rem;
+    letter-spacing: .2rem;
+
+
+}
+.box p:hover{
+    opacity: .5;
+}
+
+.portfolio .box-container .box img{
+    /* height: 45%; */
+    width:40%;
+    object-fit: cover;
+}
+
+.portfolio > .box-container >.box:hover {
+    transform: scale(1.06);
+}
+.btn{
+    padding:.7rem 3rem;
+    background:#333;
+    color:#fff;
+    cursor: pointer;
+    margin-top: 1rem;
+    font-size: 2rem;
+    border-radius: 5rem;
+    margin-left: 0.5rem;
+}
+.boxContent{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: center;
+    text-align: center
+}
+.projectBtn{
+    display: flex;
+}
+.btn:hover{
+    background-color: var(--rootColor);
+}
+.projectIcon{
+    font-size: 2.5rem;
+}
+.projectIcon>svg{
+    padding: 0 1rem;
+}
+

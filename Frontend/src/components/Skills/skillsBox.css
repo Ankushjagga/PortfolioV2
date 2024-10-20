@@ -1,0 +1,88 @@
+.counter{
+    /* flex:1 1 48rem; */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 4rem;
+}
+
+ .counter .box{
+    width:20rem;
+    background:#222;
+    text-align: center;
+    padding: 2rem;
+    margin:2rem;
+    cursor: pointer;
+    height: 20rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    box-shadow: #c289c7b9 5px 5px 5px;
+
+}
+
+  .counter .box span{
+    font-size: 4rem;
+    color:#c289c7b9;
+}
+
+ .counter .box h3{
+    font-size: 2rem;
+    color:#fff;
+}
+.counter .box:hover i{
+    color:#c289c7b9;
+
+}
+
+
+.fa-linkedin{
+    color: #0a66c2;
+}
+.fa-github{
+    color: white;
+}
+.fa-facebook{
+    color: #4267B2;
+}
+.fa-instagram{
+    color:  palevioletred;
+}
+.fa-c{
+    color: #4267B2;
+
+}
+.nodes{
+    color: green;
+}
+.fa-database{
+    color: greenyellow;
+}
+.html{
+    color: #f06529 !important ;
+}
+.fa-css3-alt{
+    color: #2965f1;
+}
+.js{
+    color: yellow;
+}
+.react{
+    color: #61DBFB;
+}
+.fa-git-alt{
+   color: #F1502F;
+}
+.express{
+   color:  #5c4949
+}
+.sql , .sequelzie{
+    color: #00758f;
+}
+.redis{
+    color :  #7A0C00
+}
+.docker{
+    color:  #0db7ed
+}

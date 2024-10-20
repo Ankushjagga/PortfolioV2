@@ -6,11 +6,11 @@ const experienceSchema = new mongoose.Schema({
         type: String,
     },
     year :{
-        type: String,
+        type: Number,
        
     },
     description :{
-        type : String
+        type : Array
     },
     role : {
         type : String

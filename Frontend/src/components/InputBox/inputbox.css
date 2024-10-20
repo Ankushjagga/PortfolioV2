@@ -1,0 +1,10 @@
+.visibleInput{
+    display: flex;
+    flex-direction: column;
+}
+.visible{
+    font-size: 1.5rem;
+}
+.impRed , .FormError{
+    color: red;
+}

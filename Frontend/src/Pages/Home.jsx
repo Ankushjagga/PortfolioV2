@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useTypingEffect } from '../CustomHooks/useTyping'
-import { programmingQuotes } from '../Utilis/Utilis'
+import { programmingQuotes } from "../Utilis/Utilis"
 import Marquee from  "react-fast-marquee"
 import { FaDocker } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io";
@@ -12,7 +12,7 @@ import { FaHtml5 } from "react-icons/fa";
 import { FaCss3Alt } from "react-icons/fa";
 import { SiRedis } from "react-icons/si";
 import { SiMysql } from "react-icons/si";
-import { SiSequelize } from "react-icons/si";
+import { SiSequelize } from "react-icons/si";''
 const Home = () => {
     const text = ["Hi 👋, I'm Ankush Kumar Jagga"]
     const [quote,setQuote] = useState("");
