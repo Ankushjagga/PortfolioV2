@@ -17,9 +17,8 @@ try {
         respObj.message ="Enter Fields Properly"
         return res.status(400).send(respObj)
     }
-    const hashedPassword = await bcrypt.hash(password, 10);
     
-    const addUser = new User({name , email , password : hashedPassword , phoneNumber ,gender
+    const addUser = new User({name , email , password : password , phoneNumber ,gender
     }
     )
     await addUser.save()
@@ -53,20 +52,26 @@ const login = async (req,res)=>{
            return  res.status(400).send(respObj)
         }
        console.log(findUser);
-       
+          if(findUser.role !== "admin"){
+            respObj.message = "Only for admin access 😁"
+            return res.status(400).send(respObj)
+          }
         const comparePassword = await bcrypt.compare(password, findUser.password);
+        console.log(comparePassword ,"adsdasdasdsa");
+        
         if(comparePassword){
             const token = findUser.generateToken();
             console.log(token);
-            
-            res.cookie("token", token,{
-                httpOnly:true,
-                
-            })
+       
             respObj.isSuccess = true;
+            respObj.Token = token
+            respObj.data = findUser
             respObj.message = "login Sucessfully"
             
             return   res.status(200).send(respObj) 
+        }else{
+            respObj.message = "Invalid Crediential"
+            return res.status(400).send(respObj)
         }
     } catch (error) {
         console.log(error);
@@ -76,6 +81,7 @@ const login = async (req,res)=>{
     
     
     }
+
 
 module.exports = {
     register,

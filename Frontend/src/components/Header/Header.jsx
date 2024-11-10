@@ -4,52 +4,80 @@ import { NavHashLink } from 'react-router-hash-link';
 import "./Header.css"
 const Header = () => {
   const location = useLocation()
-  console.log(location.hash);
   
   const [activeSection , setActiveSection] = useState("")
-      const navigation = [
-        {
-          to: "#home",
-          name: "Home",
-          icon:  <i className="fa-solid fa-house"></i>,
-        },
-        {
-          to: "#about",
-          name: "About Me",
-          icon: <i className="fa-solid fa-address-card"></i>,
-        },
-        {
-          to: "#projects",
-          name: "Projects",
-          icon: <i className="fa-solid fa-diagram-project"></i>,
-        },
-        {
-          to: "#experience",
-          name: "Experience",
-          icon: <i className="fa-solid fa-brain"></i>,
-        },
-        {
-          to: "#skills",
-          name: "Skills",
-          icon:<i className="fa-solid fa-user"></i>,
-        },
-        {
-          to: "#education",
-          name: "Education",
-          icon: <i class="fa-solid fa-graduation-cap"></i>,
-        },
-    ]
+    //   const navigation = [
+    //     {
+    //       to: "#home",
+    //       name: "Home",
+    //       icon:  <i className="fa-solid fa-house"></i>,
+    //     },
+    //     {
+    //       to: "#about",
+    //       name: "About Me",
+    //       icon: <i className="fa-solid fa-address-card"></i>,
+    //     },
+    //     {
+    //       to: "#projects",
+    //       name: "Projects",
+    //       icon: <i className="fa-solid fa-diagram-project"></i>,
+    //     },
+    //     {
+    //       to: "#experience",
+    //       name: "Experience",
+    //       icon: <i className="fa-solid fa-brain"></i>,
+    //     },
+    //     {
+    //       to: "#skills",
+    //       name: "Skills",
+    //       icon:<i className="fa-solid fa-user"></i>,
+    //     },
+    //     {
+    //       to: "#education",
+    //       name: "Education",
+    //       icon: <i class="fa-solid fa-graduation-cap"></i>,
+    //     },
+    // ]
 
-    useEffect(() => {
-      setActiveSection(location.hash);
+    // useEffect(() => {
+    //   setActiveSection(location.hash);
       
-    }, [location]);
-    console.log(activeSection , "saddas");
+    // }, [location]);
+    // console.log(activeSection , "saddas");
     
+    const handleScroll = (id) =>{
+      document
+      .getElementById(id)
+      .scrollIntoView({ behavior: 'smooth' });
+      setActiveSection(id)
+    }
   return (
     <div className='nav'>
-    <h4 className={`logoNav`} >AJ</h4>
-    {navigation.map(nav=>{
+    <NavLink to="/"> <h4 className={`logoNav`} >  AJ</h4></NavLink>
+    <li  className = {`headerNav ${activeSection === "home" ? "active" : ""}`} onClick={() => {
+            handleScroll("home")
+          }}><i className="fa-solid fa-house"></i> Home</li>
+            <li  className = {`headerNav ${activeSection === "about" ? "active" : ""}`} onClick={() => {
+           handleScroll("about")
+          }}><i className="fa-solid fa-address-card"></i> About Me</li>
+      <li className = {`headerNav ${activeSection === "projects" ? "active" : ""}`}  onClick={() => {
+           handleScroll("projects")
+          }}><i className="fa-solid fa-diagram-project"></i> Projects</li>
+           <li className = {`headerNav ${activeSection === "experience" ? "active" : ""}`}  onClick={() => {
+           handleScroll("experience")
+          }}><i className="fa-solid fa-brain"></i> Experience</li>
+           <li className = {`headerNav ${activeSection === "skills" ? "active" : ""}`}  onClick={() => {
+           handleScroll("skills")
+          }}><i className="fa-solid fa-user"></i> Skills</li>
+           <li  className = {`headerNav ${activeSection === "education" ? "active" : ""}`} onClick={() => {
+           handleScroll("education")
+          }}><i class="fa-solid fa-graduation-cap"></i> Education</li> 
+          <li  className = {`headerNav ${activeSection === "contactss" ? "active" : ""}`} onClick={() => {
+           handleScroll("contactss")
+          }}><i class="fa-solid fa-phone"></i> Contact</li>
+    <NavLink to="/okk"  className={`headerNav ${activeSection === "resume" ? "active" : ""}`}><i className="fa-solid fa-download"></i>   Resume</NavLink>
+
+    {/* {navigation.map(nav=>{
       console.log(activeSection === nav.to);
       
       return (
@@ -63,9 +91,8 @@ const Header = () => {
           {nav.name}
         </NavHashLink>
       )
-    })}
+    })} */}
   
-    <NavLink to="/okk"  className={'headerNav'}><i className="fa-solid fa-download"></i>   Resume</NavLink>
     </div>
   )
 }

@@ -7,7 +7,7 @@ const ExpEduBox = ({title , data}) => {
     <>
     <h1 id="feel" style={{textAlign:"center"}}>{title} </h1>
     {data?.map((ele=>{
-        console.log(ele?.startDate);
+        // console.log(ele?.startDate);
         
         return (
             <div className='expDetail'  key={ele.id}>

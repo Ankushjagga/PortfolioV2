@@ -26,7 +26,7 @@ const Projects = () => {
     <h1 className='about'> <span className='headColor'> Proj</span>ects</h1>
     <h1 id="feel" style={{textAlign:"center"}}>Some of my Projects 🚀</h1>
     {projects?.map((ele)=>{
-        console.log(ele.languages);
+        // console.log(ele.languages);
         
         return (
           <>

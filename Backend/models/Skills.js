@@ -5,6 +5,9 @@ const SkillSchema = new mongoose.Schema({
     name: {
         type: String,
     },
+    logo :{
+        type : String
+    }
    
 }, {
     timestamps : true

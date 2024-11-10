@@ -12,12 +12,23 @@ import { FaHtml5 } from "react-icons/fa";
 import { FaCss3Alt } from "react-icons/fa";
 import { SiRedis } from "react-icons/si";
 import { SiMysql } from "react-icons/si";
-import { SiSequelize } from "react-icons/si";''
+import { SiSequelize } from "react-icons/si";import About from './About';
+import Projects from './Projects';
+import Skills from './Skills';
+import Experience from './Experience';
+import Education from './Education';
+import Contact from './Contact';
+import Header from '../components/Header/Header';
+import { useSelector } from 'react-redux';
+import { userData } from '../redux/userSlice';
+import {Hourglass} from "react-loader-spinner"
+import Footer from '../components/Footer/Footer';
+
 const Home = () => {
     const text = ["Hi 👋, I'm Ankush Kumar Jagga"]
     const [quote,setQuote] = useState("");
     const typing = useTypingEffect(text)
-    
+    const {isUserSliceFetching} = useSelector(userData)
     useEffect(() => {
         const getRandomQuote = ()=>{
             const randomIndex = Math.floor(Math.random() * programmingQuotes.length);
@@ -59,6 +70,24 @@ clearInterval(interval)
    
 
   return (
+    <>
+    {isUserSliceFetching &&
+    <div className='loading'>
+{/* <h1>loadinggg</h1> */}
+    <Hourglass
+  visible={true}
+  height="200"
+  width="600"
+  ariaLabel="hourglass-loading"
+  wrapperStyle={{}}
+  wrapperClass="load"
+  colors={["#c289c7b9", ' #C2B280']}
+  /> 
+  </div> }
+  
+  <>
+      <Header/> 
+
     <div id= "home">
     <div className='typing'>
 
@@ -109,6 +138,18 @@ clearInterval(interval)
      
      
   </div>
+  <About/>
+  <Projects/>
+  <Experience/>
+  <Skills/>
+  <Education/>
+  <Contact/>
+  {/* <Error/> */}
+  <Footer/>
+
+       </>
+
+       </>
   )
 }
 

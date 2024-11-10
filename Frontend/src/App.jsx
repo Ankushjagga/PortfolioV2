@@ -12,24 +12,27 @@ import Contact from "./Pages/Contact"
 import Error from "./Pages/Error"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import MainRoutes from "./Routes/main"
 
 function App() {
 
+  
+
   return (
     <>
-
+{/* routes ka kuch karna hain sahiii */}
    <CustomCursor/>
 <ToastContainer/>
-  <Header/> 
-  <Home/>
+  <MainRoutes/>
+  {/* <Home/>
   <About/>
   <Projects/>
   <Experience/>
   <Skills/>
   <Education/>
   <Contact/>
-  <Error/>
-  <Footer/>
+  <Error/> */}
+  {/* <Footer/> */}
     </>
   )
 }

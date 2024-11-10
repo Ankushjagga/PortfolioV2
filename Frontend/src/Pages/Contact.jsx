@@ -3,10 +3,11 @@ import InputBox from '../components/InputBox/InputBox'
 import { useDispatch, useSelector } from 'react-redux'
 import { addMessage, clearAllSliceStates, userData } from '../redux/userSlice'
 import { ToastContainer, toast } from 'react-toastify';
+import smalluploadLoader from "../assests/smalluploadLoader.gif"
 const Contact = () => {
     const inputRef = useRef(null)
     const dispatch = useDispatch()
-    const {isUserSliceSuccess , isaddMessageSuccess} = useSelector(userData)
+    const {isUserSliceSuccess , userSliceSuccessMessage , isUserSliceFetchingSmall} = useSelector(userData)
     const [inputMessage, setInputMessage] = useState({
         name: "",
         email : "",
@@ -19,8 +20,8 @@ const Contact = () => {
     })
 
 useEffect(() => {
-if(isaddMessageSuccess){
-    toast.success(isaddMessageSuccess)
+if(isUserSliceSuccess){
+    toast.success(userSliceSuccessMessage)
 }
 return () => {
     clearAllSliceStates()
@@ -68,7 +69,7 @@ return () => {
                 })
     }
   return (
-    <div id='contact'>
+    <div id='contactss'>
     <h1 className='about'> <span className='headColor'> Contact</span> Me</h1>
     <div className='contactInfo'>
         <div className='contactInput'>
@@ -81,7 +82,7 @@ return () => {
         <textarea  ref= {inputRef} className={"inputBox"} onChange={handleInput} name='message' cols={10} rows={6} value={inputMessage.message} />
            <span className='FormError'>  {error.message ? error.message : ""}</span>
         </span>
-        <button className='btn contactBtn' onClick={handleSubmit}>Send <i className="fa-solid fa-rocket"></i></button>
+        <button className='btn contactBtn' disabled ={isUserSliceFetchingSmall} onClick={handleSubmit}>Send <i className="fa-solid fa-rocket"></i> {isUserSliceFetchingSmall && <img className='upload' src={smalluploadLoader} alt='uploading...'/>} </button>
         </div>
         <span className='gokuDiv'> 
 

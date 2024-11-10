@@ -12,10 +12,10 @@ const SkillsBox = ({icon , language}) => {
     }, [])
 
     const getLanguageIcons = (skill) =>{
-        console.log(skill);
+        // console.log(skill);
         
        const icon =  languages.filter((ele)=> ele.name === skill)
-       console.log(icon[0]?.icon, "icon");
+    //    console.log(icon[0]?.icon, "icon");
        
        return icon[0]?.icon
     }

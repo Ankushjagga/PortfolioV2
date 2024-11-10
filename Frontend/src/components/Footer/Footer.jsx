@@ -32,7 +32,7 @@ const Footer = () => {
 
 
         </span>
-
+         <NavLink to = "/login" ><p style={{textDecoration : "underline ", color : "#c289c7b9"}}> Login </p></NavLink>
     </footer>
     </>
   )

@@ -1,10 +1,11 @@
 .headerNav ,  .logoNav{
     margin: 1rem;
     padding: .5rem;
+    list-style: none;
     font-size: 1.5rem;
     
 }
-.headerNav:hover , .actives{
+.headerNav:hover , .active{
     color: var(--rootColor);
 }
 .logoNav{
@@ -23,6 +24,55 @@
    top: 0;
    z-index: 100;
 }
+.title{
+    display :flex;
+    justify-content: center;
+    align-items: center; 
+    text-align: center;
+ }
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+
+}
 .fa-solid{
     margin: 0 1rem;
+}
+.navLinks{
+    text-decoration: none;
+    list-style: none;
+}
+.adminPanel{
+    font-size: 2rem;
+    margin:  2.5rem;
+}
+
+.nav-link{
+    color: #fff;
+    margin: 0 2rem 0 0;
+}
+.nav-lin{
+    color: #fff!important;
+    margin: 0 2rem 0 0;
+}
+.lin{
+    margin: 0 4rem 0 0;
+    cursor: pointer;
+    /* color: var(--rootColor); */
+    list-style: none;
+    font-size: 1.5rem;
+    background-color: var(--rootColor);
+    padding: 1rem;
+    border-radius: 3rem;
+
+}
+.lin:hover, .nav-link:hover{
+    color: black!important;
+}
+.adminLinkss{
+display: flex;
+justify-content: center;
+align-items: center;
 }

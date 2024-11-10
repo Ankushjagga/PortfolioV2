@@ -40,8 +40,10 @@ const getAllSkills = async (req,res)=>{
 try {
     // const data = await messagesModel.find({}).populate("userId", "name email")
     const data = await SkillsModel.find({})
+    const count = await SkillsModel.countDocuments({});
     resObj.isSuccess = true
     resObj.data = data
+    resObj.count = count
     resObj.message = "skills fetch successfully"
     return res.status(200).send(resObj)
 } catch (error) {
@@ -61,7 +63,9 @@ const getAllEducation = async (req,res)=>{
 
 try {
     // const data = await messagesModel.find({}).populate("userId", "name email")
-    const data = await educationModel.find({})
+    const data = await educationModel.find({
+        
+    }).sort({"createdAt" : -1})
     resObj.isSuccess = true
     resObj.data = data
     resObj.message = "education fetch successfully"
@@ -85,10 +89,12 @@ const getAllProjects = async (req,res)=>{
 try {
     // const data = await messagesModel.find({}).populate("userId", "name email")
     const data = await projectModel.find({})
+    const count = await projectModel.countDocuments({});
     console.log(data);
     
     resObj.isSuccess = true
     resObj.data = data
+    resObj.count = count
     resObj.message = "project fetch successfully"
     return res.status(200).send(resObj)
 } catch (error) {
@@ -159,7 +165,7 @@ try {
         }
         resObj.isSuccess = true
         resObj.data = userdata
-        resObj.message = "done"
+        resObj.message = "message send sucessfully"
         return res.status(200).send(resObj)
     }
     
@@ -196,8 +202,10 @@ const getAllUserMessages = async (req,res)=>{
 
 try {
     const data = await messagesModel.find({}).populate("userId", "name email")
+    const count = await messagesModel.countDocuments({});
     resObj.isSuccess = true
     resObj.data = data
+    resObj.count = count
     resObj.message = "data fetch successfully"
     return res.status(200).send(resObj)
 } catch (error) {
@@ -323,6 +331,138 @@ res.status(200).send(resObj)
     }
 }
 
+const deleteProject = async (req,res)=>{
+    let resObj = {
+        isSuccess : false,
+        data : null,
+        message : ""
+    }
+
+try {
+    const id =req.params.id ; 
+    const data = await projectModel.findByIdAndDelete({_id:id})
+    
+    resObj.isSuccess = true
+    resObj.data = data
+    resObj.message = "project deleted successfully"
+    return res.status(200).send(resObj)
+} catch (error) {
+    resObj.message = error.message
+    console.log(error);
+    
+    return res.status(500).send(resObj)
+}
+
+}
+
+
+
+const deleteSkill = async (req,res)=>{
+    let resObj = {
+        isSuccess : false,
+        data : null,
+        message : ""
+    }
+
+try {
+    const id =req.params.id ; 
+    const data = await SkillsModel.findByIdAndDelete({_id :id})
+    
+    resObj.isSuccess = true
+    resObj.data = data
+    resObj.message = "skill deleted successfully"
+    return res.status(200).send(resObj)
+} catch (error) {
+    resObj.message = error.message
+    console.log(error);
+    
+    return res.status(500).send(resObj)
+}
+
+}
+
+const deleteMessage = async (req,res)=>{
+    let resObj = {
+        isSuccess : false,
+        data : null,
+        message : ""
+    }
+
+try {
+    const id =req.params.id ; 
+    const data = await messagesModel.findByIdAndDelete({_id: id})
+    
+    resObj.isSuccess = true
+    resObj.data = data
+    resObj.message = "MESSAGE deleted successfully"
+    return res.status(200).send(resObj)
+} catch (error) {
+    resObj.message = error.message
+    console.log(error);
+    
+    return res.status(500).send(resObj)
+}
+
+}
+
+
+
+
+const editProjects = async (req,res)=>{
+    let resObj = {
+        isSuccess : false,
+        data : null,
+        message : ""
+    }
+
+
+    try {
+
+        const {description , name  , image, languages} = req.body
+       const data = await   projectModel.findByIdAndUpdate( req.params.id ,  {
+        $set: { name, image , description, languages}
+       } ,
+       { new: true } )
+       await data.save()
+       resObj.isSuccess = true
+resObj.message = "project edited sucessfully"
+resObj.data = data
+res.status(200).send(resObj)
+
+        
+    } catch (error) {
+        resObj.message = error.message
+        return res.status(500).send(resObj)
+    }
+}
+
+const editSkill = async (req,res)=>{
+    let resObj = {
+        isSuccess : false,
+        data : null,
+        message : ""
+    }
+
+
+    try {
+
+        const {  name  , logo} = req.body
+       const data = await   SkillsModel.findByIdAndUpdate( req.params.id ,  {
+        $set: { name, logo}
+       } ,
+       { new: true } )
+       await data.save()
+       resObj.isSuccess = true
+resObj.message = "skill edited sucessfully"
+resObj.data = data
+res.status(200).send(resObj)
+
+        
+    } catch (error) {
+        resObj.message = error.message
+        return res.status(500).send(resObj)
+    }
+}
 
 module.exports = {
     getAllUser,
@@ -335,5 +475,10 @@ module.exports = {
     addSkills,
     addEducation,
     addExpericence,
-    addProjects
+    addProjects,
+    deleteProject,
+    deleteSkill,
+    deleteMessage,
+    editProjects,
+    editSkill
 }
