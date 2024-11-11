@@ -10,7 +10,17 @@ const educationSchema = new mongoose.Schema({
     },
     description :{
         type:String
-    }
+    } ,
+    startDate : {
+        type : Date
+
+        },
+        endDate : {
+            type : Date
+        },
+        image : {
+            type : String
+        }
 }, {
     timestamps : true
 })

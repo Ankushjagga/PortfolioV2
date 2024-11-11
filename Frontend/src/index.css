@@ -406,3 +406,16 @@ text-align: center;
 .select{
   color: #000000;
 }
+.addProject{
+  display: flex;
+  /* justify-content: center; */
+}
+#addProject{
+ right: 50%;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background: #fff;
+  border: none;
+  border-radius: 2rem;
+  color: transparent;
+}

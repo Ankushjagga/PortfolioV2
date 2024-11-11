@@ -15,6 +15,9 @@ const experienceSchema = new mongoose.Schema({
     role : {
         type : String
     },
+    image : {
+        type : String
+    },
     
         startDate : {
         type : Date
@@ -22,7 +25,7 @@ const experienceSchema = new mongoose.Schema({
         },
         endDate : {
             type : Date
-        }
+        },
     
 }, {
     timestamps : true

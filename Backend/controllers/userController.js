@@ -255,9 +255,9 @@ const addEducation = async (req,res)=>{
 
     try {
 
-        const {description , specialization , school} = req.body
+        const {description , specialization ,image ,  school , startDate , endDate} = req.body
        const data = await new  educationModel({
-        school, specialization , description
+        school, specialization , description , startDate , endDate , image
        })
        await data.save()
        resObj.isSuccess = true
@@ -320,7 +320,7 @@ const addProjects = async (req,res)=>{
        })
        await data.save()
        resObj.isSuccess = true
-resObj.message = "education added sucessfully"
+resObj.message = "project added sucessfully"
 resObj.data = data
 res.status(200).send(resObj)
 
@@ -381,6 +381,31 @@ try {
 
 }
 
+
+const deleteEducation = async (req,res)=>{
+    let resObj = {
+        isSuccess : false,
+        data : null,
+        message : ""
+    }
+
+try {
+    const id =req.params.id ; 
+    const data = await educationModel.findByIdAndDelete({_id :id})
+    
+    resObj.isSuccess = true
+    resObj.data = data
+    resObj.message = "education deleted successfully"
+    return res.status(200).send(resObj)
+} catch (error) {
+    resObj.message = error.message
+    console.log(error);
+    
+    return res.status(500).send(resObj)
+}
+
+}
+
 const deleteMessage = async (req,res)=>{
     let resObj = {
         isSuccess : false,
@@ -405,6 +430,29 @@ try {
 
 }
 
+const deleteExperience = async (req,res)=>{
+    let resObj = {
+        isSuccess : false,
+        data : null,
+        message : ""
+    }
+
+try {
+    const id =req.params.id ; 
+    const data = await experienceModel.findByIdAndDelete({_id:id})
+    
+    resObj.isSuccess = true
+    resObj.data = data
+    resObj.message = "experience deleted successfully"
+    return res.status(200).send(resObj)
+} catch (error) {
+    resObj.message = error.message
+    console.log(error);
+    
+    return res.status(500).send(resObj)
+}
+
+}
 
 
 
@@ -464,6 +512,70 @@ res.status(200).send(resObj)
     }
 }
 
+
+
+
+const editEducation = async (req,res)=>{
+    let resObj = {
+        isSuccess : false,
+        data : null,
+        message : ""
+    }
+
+
+    try {
+
+        const {description , specialization , school , startDate , endDate} = req.body
+     
+       const data = await   educationModel.findByIdAndUpdate( req.params.id ,  {
+        $set: {  school, specialization , description , startDate , endDate}
+       } ,
+       { new: true } )
+       await data.save()
+       resObj.isSuccess = true
+resObj.message = "education edited sucessfully"
+resObj.data = data
+res.status(200).send(resObj)
+
+        
+    } catch (error) {
+        resObj.message = error.message
+        return res.status(500).send(resObj)
+    }
+}
+
+
+
+const editExperience = async (req,res)=>{
+    let resObj = {
+        isSuccess : false,
+        data : null,
+        message : ""
+    }
+
+
+    try {
+
+        const {company , year , description , role , startDate , endDate , image} = req.body
+     
+       const data = await   experienceModel.findByIdAndUpdate( req.params.id ,  {
+        $set: {  company, year , description , role ,startDate , endDate , image}
+       } ,
+       { new: true } )
+       await data.save()
+       resObj.isSuccess = true
+resObj.message = "expericence edited sucessfully"
+resObj.data = data
+res.status(200).send(resObj)
+
+        
+    } catch (error) {
+        resObj.message = error.message
+        return res.status(500).send(resObj)
+    }
+}
+
+
 module.exports = {
     getAllUser,
     getAllEducation,
@@ -480,5 +592,10 @@ module.exports = {
     deleteSkill,
     deleteMessage,
     editProjects,
-    editSkill
+    editSkill,
+    deleteEducation,
+    editEducation,
+    deleteExperience,
+    editExperience
+    
 }

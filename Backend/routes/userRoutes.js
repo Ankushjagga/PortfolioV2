@@ -17,8 +17,12 @@ router.post("/addProjects",userController.addProjects)
 router.delete("/deleteProject/:id",userController.deleteProject)
 router.delete("/deleteSkill/:id",userController.deleteSkill)
 router.delete("/deleteMessage/:id",userController.deleteMessage)
+router.delete("/deleteEducation/:id",userController.deleteEducation)
+router.delete("/deleteExperience/:id",userController.deleteExperience)
 router.put("/editProject/:id",userController.editProjects)
 router.put("/editSkill/:id",userController.editSkill)
+router.put("/editEducation/:id",userController.editEducation)
+router.put("/editExperience/:id",userController.editExperience)
 
 
 module.exports = router 

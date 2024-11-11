@@ -17,6 +17,12 @@ import AdminExperience from '../Pages/Admin/AdminExperience'
 import AdminMessages from '../Pages/Admin/AdminMessages'
 import EditProjects from '../Pages/Admin/EditProjects'
 import EditSkills from '../Pages/Admin/EditSkills'
+import AddProject from '../Pages/Admin/addProject'
+import AddSkill from '../Pages/Admin/AddSkill'
+import EditEducation from '../Pages/Admin/EditEducation'
+import AddEducation from '../Pages/Admin/AddEducation'
+import EditExperience from '../Pages/Admin/EditExperience'
+import AddExperience from '../Pages/Admin/AddExperience'
 
 // const Home  = lazy(()=> import ("../Pages/Home"))
 // const About  = lazy(()=> import ("../Pages/About"))
@@ -55,10 +61,16 @@ const MainRoutes = () =>{
       <Route path='/editProject/:id' element = {<EditProjects/>}/>
       <Route path='/adminSkills' element = {<AdminSkills/>}/>
       <Route path='/editSkill/:id' element = {<EditSkills/>}/>
+      <Route path='/editEducation/:id' element = {<EditEducation/>}/>
+      <Route path='/editExperience/:id' element = {<EditExperience/>}/>
 
       <Route path='/adminEducation' element = {<AdminEducation/>}/>
       <Route path='/adminExperience' element = {<AdminExperience/>}/>
       <Route path='/adminMessages' element = {<AdminMessages/>}/>
+      <Route path='/addProject' element = {<AddProject/>}/>
+      <Route path='/addSkill' element = {<AddSkill/>}/>
+      <Route path='/addEducation' element = {<AddEducation/>}/>
+      <Route path='/addExperience' element = {<AddExperience/>}/>
       <Route path='*' element = {<Error/>}/>
 
     </Routes>

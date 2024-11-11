@@ -50,3 +50,22 @@ export const languages = [
     
 ]
  
+
+export const iconsOption = [
+    {    value : "html" , label : "html"},
+    {    value : "css" , label : "css"},
+    {    value : "js" , label : "js"},
+    {    value : "react" , label : "react"},
+    {    value : "node" , label : "node"},
+    {    value : "express" , label : "express"},
+    {    value : "mongodb" , label : "mongodb"},
+    {    value : "sql" , label : "sql"},
+    {    value : "sequelize" , label : "sequelize"},
+    {    value : "redis" , label : "redis"},
+    {    value : "docker" , label : "docker"},
+    {    value : "native" , label : "native"},
+    {    value : "c" , label : "c"},
+    {    value : "c++" , label : "c++"},
+    {    value : "git" , label : "git"}
+  
+]

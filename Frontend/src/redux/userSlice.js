@@ -298,14 +298,14 @@ Cookies.get("loginData") !== "undefined" && Cookies.get("loginData")
 
 
 
-           /*   deleteProjects        */
-           export const deleteProject = createAsyncThunk(
-            "user/deleteProject",
+           /*   deleteEducation        */
+           export const deleteEducation = createAsyncThunk(
+            "user/deleteEducation",
             
             async (obj, thunkAPI) => {
               try {
         
-                const response = await fetch(`${import.meta.env.VITE_API}/user/deleteProject/${obj}`, {
+                const response = await fetch(`${import.meta.env.VITE_API}/user/deleteEducation/${obj}`, {
                   method: "DELETE",
                   headers: {
                     Accept: "application/json",
@@ -331,6 +331,79 @@ Cookies.get("loginData") !== "undefined" && Cookies.get("loginData")
             }
           );
           /* END*/
+
+
+        /*   deleteProjects        */
+        export const deleteProject = createAsyncThunk(
+          "user/deleteProject",
+          
+          async (obj, thunkAPI) => {
+            try {
+      
+              const response = await fetch(`${import.meta.env.VITE_API}/user/deleteProject/${obj}`, {
+                method: "DELETE",
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+                },
+              });
+              const data = await response.json();
+              console.log(response.status, "response", data);                                                                                                                          
+              if (response?.status === 200) {
+               console.log(data);
+               
+        
+                return data;
+              } else {
+                  console.log(data);
+                  
+                return thunkAPI.rejectWithValue(data);
+              }
+            } catch (e) {
+              console.log("Error", e.response.data);
+              thunkAPI.rejectWithValue(e.response.data);
+            }
+          }
+        );
+        /* END*/
+
+
+
+ /*   deleteExperience        */
+ export const deleteExperience = createAsyncThunk(
+  "user/deleteExperience",
+  
+  async (obj, thunkAPI) => {
+    try {
+
+      const response = await fetch(`${import.meta.env.VITE_API}/user/deleteExperience/${obj}`, {
+        method: "DELETE",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      console.log(response.status, "response", data);                                                                                                                          
+      if (response?.status === 200) {
+       console.log(data);
+       
+
+        return data;
+      } else {
+          console.log(data);
+          
+        return thunkAPI.rejectWithValue(data);
+      }
+    } catch (e) {
+      console.log("Error", e.response.data);
+      thunkAPI.rejectWithValue(e.response.data);
+    }
+  }
+);
+/* END*/
+
+
 
            /*   editProject        */
            export const editProject = createAsyncThunk(
@@ -379,6 +452,234 @@ export const editSkill = createAsyncThunk(
 
       const response = await fetch(`${import.meta.env.VITE_API}/user/editSkill/${obj.id}`, {
         method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body : JSON.stringify(obj)
+      });
+      const data = await response.json();
+      console.log(response.status, "response", data);                                                                                                                          
+      if (response?.status === 200) {
+       console.log(data);
+       
+
+        return data;
+      } else {
+          console.log(data);
+          
+        return thunkAPI.rejectWithValue(data);
+      }
+    } catch (e) {
+      console.log("Error", e.response.data);
+      thunkAPI.rejectWithValue(e.response.data);
+    }
+  }
+);
+
+
+/*   editEducation        */
+export const editEducation = createAsyncThunk(
+  "user/editEducation",
+  
+  async (obj, thunkAPI) => {
+    console.log(obj);
+    
+    try {
+
+      const response = await fetch(`${import.meta.env.VITE_API}/user/editEducation/${obj.id}`, {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body : JSON.stringify(obj)
+      });
+      const data = await response.json();
+      console.log(response.status, "response", data);                                                                                                                          
+      if (response?.status === 200) {
+       console.log(data);
+       
+
+        return data;
+      } else {
+          console.log(data);
+          
+        return thunkAPI.rejectWithValue(data);
+      }
+    } catch (e) {
+      console.log("Error", e.response.data);
+      thunkAPI.rejectWithValue(e.response.data);
+    }
+  }
+);
+
+
+
+/*   editExperience        */
+export const editExperience = createAsyncThunk(
+  "user/editExperience",
+  
+  async (obj, thunkAPI) => {
+    console.log(obj);
+    
+    try {
+
+      const response = await fetch(`${import.meta.env.VITE_API}/user/editExperience/${obj.id}`, {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body : JSON.stringify(obj)
+      });
+      const data = await response.json();
+      console.log(response.status, "response", data);                                                                                                                          
+      if (response?.status === 200) {
+       console.log(data);
+       
+
+        return data;
+      } else {
+          console.log(data);
+          
+        return thunkAPI.rejectWithValue(data);
+      }
+    } catch (e) {
+      console.log("Error", e.response.data);
+      thunkAPI.rejectWithValue(e.response.data);
+    }
+  }
+);
+
+
+
+
+
+
+/*   addProject        */
+export const addProjects = createAsyncThunk(
+  "user/addProjects",
+  
+  async (obj, thunkAPI) => {
+    console.log(obj);
+    
+    try {
+
+      const response = await fetch(`${import.meta.env.VITE_API}/user/addProjects`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body : JSON.stringify(obj)
+      });
+      const data = await response.json();
+      console.log(response.status, "response", data);                                                                                                                          
+      if (response?.status === 200) {
+       console.log(data);
+       
+
+        return data;
+      } else {
+          console.log(data);
+          
+        return thunkAPI.rejectWithValue(data);
+      }
+    } catch (e) {
+      console.log("Error", e.response.data);
+      thunkAPI.rejectWithValue(e.response.data);
+    }
+  }
+);
+
+
+
+/*   addSkills       */
+export const addSkills = createAsyncThunk(
+  "user/addSkills",
+  
+  async (obj, thunkAPI) => {
+    console.log(obj);
+    
+    try {
+
+      const response = await fetch(`${import.meta.env.VITE_API}/user/addSkills`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body : JSON.stringify(obj)
+      });
+      const data = await response.json();
+      console.log(response.status, "response", data);                                                                                                                          
+      if (response?.status === 200) {
+       console.log(data);
+       
+
+        return data;
+      } else {
+          console.log(data);
+          
+        return thunkAPI.rejectWithValue(data);
+      }
+    } catch (e) {
+      console.log("Error", e.response.data);
+      thunkAPI.rejectWithValue(e.response.data);
+    }
+  }
+);
+
+
+/*   addEducation       */
+export const addEducation = createAsyncThunk(
+  "user/addEducation",
+  
+  async (obj, thunkAPI) => {
+    console.log(obj);
+    
+    try {
+
+      const response = await fetch(`${import.meta.env.VITE_API}/user/addEducation`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body : JSON.stringify(obj)
+      });
+      const data = await response.json();
+      console.log(response.status, "response", data);                                                                                                                          
+      if (response?.status === 200) {
+       console.log(data);
+       
+
+        return data;
+      } else {
+          console.log(data);
+          
+        return thunkAPI.rejectWithValue(data);
+      }
+    } catch (e) {
+      console.log("Error", e.response.data);
+      thunkAPI.rejectWithValue(e.response.data);
+    }
+  }
+);
+
+
+/*   addExperience       */
+export const addExperience = createAsyncThunk(
+  "user/addExperience",
+  
+  async (obj, thunkAPI) => {
+    console.log(obj);
+    
+    try {
+
+      const response = await fetch(`${import.meta.env.VITE_API}/user/addExpericence`, {
+        method: "POST",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -685,6 +986,65 @@ export const editSkill = createAsyncThunk(
             return state;
           });
 
+
+
+
+          builder.addCase(deleteEducation.fulfilled, (state, { payload }) => {
+            state.isUserSliceFetching = false;
+            console.log(payload);
+            state.isUserSliceSuccess = true;
+            state.userSliceSuccessMessage = payload?.message 
+            const deleteArray = state.education.filter((ele)=> ele._id != payload?.data._id)
+            state.education = deleteArray
+      
+            return state;
+          });
+          builder.addCase(deleteEducation.pending, (state, { payload }) => {
+            state.isUserSliceFetching = true;
+            state.isUserSliceSuccess = false;
+            console.log(payload);
+            
+            return state;
+          });
+          builder.addCase(deleteEducation.rejected, (state, { payload }) => {
+            state.isUserSliceFetching = false;
+            state.isUserSliceError = true
+            state.userSliceErrorMessage = payload?.message 
+            console.log(payload);
+
+            return state;
+          });
+
+
+
+          builder.addCase(deleteExperience.fulfilled, (state, { payload }) => {
+            state.isUserSliceFetching = false;
+            console.log(payload);
+            state.isUserSliceSuccess = true;
+            state.userSliceSuccessMessage = payload?.message 
+            const deleteArray = state.experience.filter((ele)=> ele._id != payload?.data._id)
+            state.experience = deleteArray
+      
+            return state;
+          });
+          builder.addCase(deleteExperience.pending, (state, { payload }) => {
+            state.isUserSliceFetching = true;
+            state.isUserSliceSuccess = false;
+            console.log(payload);
+            
+            return state;
+          });
+          builder.addCase(deleteExperience.rejected, (state, { payload }) => {
+            state.isUserSliceFetching = false;
+            state.isUserSliceError = true
+            state.userSliceErrorMessage = payload?.message 
+            console.log(payload);
+
+            return state;
+          });
+
+
+
           builder.addCase(editProject.fulfilled, (state, { payload }) => {
             state.isUserSliceFetching = false;
             console.log(payload);
@@ -744,6 +1104,181 @@ export const editSkill = createAsyncThunk(
 
             return state;
           });
+
+
+
+
+          builder.addCase(editEducation.fulfilled, (state, { payload }) => {
+            state.isUserSliceFetching = false;
+            console.log(payload);
+            state.isUserSliceSuccess = true;
+            state.userSliceSuccessMessage = payload?.message 
+            const educationIndex = state.education.findIndex((project)=> project._id = payload.data._id);
+            const updatedPoject = {...state.education[educationIndex] , ...payload.data }
+            const updatedProjectData = [...state.education]
+            updatedProjectData[educationIndex] = updatedPoject;
+            state.education = updatedProjectData;
+      
+            return state;
+          });
+          builder.addCase(editEducation.pending, (state, { payload }) => {
+            state.isUserSliceFetching = true;
+            state.isUserSliceSuccess = false;
+            console.log(payload);
+            
+            return state;
+          });
+          builder.addCase(editEducation.rejected, (state, { payload }) => {
+            state.isUserSliceFetching = false;
+            state.isUserSliceError = true
+            state.userSliceErrorMessage = payload?.message 
+            console.log(payload);
+
+            return state;
+          });
+
+
+          builder.addCase(editExperience.fulfilled, (state, { payload }) => {
+            state.isUserSliceFetching = false;
+            console.log(payload);
+            state.isUserSliceSuccess = true;
+            state.userSliceSuccessMessage = payload?.message 
+            const projectIndex = state.experience.findIndex((project)=> project._id = payload.data._id);
+            const updatedPoject = {...state.experience[projectIndex] , ...payload.data }
+            const updatedProjectData = [...state.experience]
+            updatedProjectData[projectIndex] = updatedPoject;
+            state.experience = updatedProjectData;
+      
+            return state;
+          });
+          builder.addCase(editExperience.pending, (state, { payload }) => {
+            state.isUserSliceFetching = true;
+            state.isUserSliceSuccess = false;
+            console.log(payload);
+            
+            return state;
+          });
+          builder.addCase(editExperience.rejected, (state, { payload }) => {
+            state.isUserSliceFetching = false;
+            state.isUserSliceError = true
+            state.userSliceErrorMessage = payload?.message 
+            console.log(payload);
+
+            return state;
+          });
+
+
+
+          builder.addCase(addProjects.fulfilled, (state, { payload }) => {
+            state.isUserSliceFetching = false;
+            console.log(payload);
+            state.isUserSliceSuccess = true;
+            state.userSliceSuccessMessage = payload?.message 
+            const updatedPoject = {...state.projects , ...payload.data }
+            state.projects = updatedPoject;
+      
+            return state;
+          });
+          builder.addCase(addProjects.pending, (state, { payload }) => {
+            state.isUserSliceFetching = true;
+            state.isUserSliceSuccess = false;
+            console.log(payload);
+            
+            return state;
+          });
+          builder.addCase(addProjects.rejected, (state, { payload }) => {
+            state.isUserSliceFetching = false;
+            state.isUserSliceError = true
+            state.userSliceErrorMessage = payload?.message 
+            console.log(payload);
+
+            return state;
+          });
+
+
+          builder.addCase(addSkills.fulfilled, (state, { payload }) => {
+            state.isUserSliceFetching = false;
+            console.log(payload);
+            state.isUserSliceSuccess = true;
+            state.userSliceSuccessMessage = payload?.message 
+        
+            const updatedPoject = {...state.skills, ...payload.data }
+            state.skills = updatedPoject;
+      
+            return state;
+          });
+          builder.addCase(addSkills.pending, (state, { payload }) => {
+            state.isUserSliceFetching = true;
+            state.isUserSliceSuccess = false;
+            console.log(payload);
+            
+            return state;
+          });
+          builder.addCase(addSkills.rejected, (state, { payload }) => {
+            state.isUserSliceFetching = false;
+            state.isUserSliceError = true
+            state.userSliceErrorMessage = payload?.message 
+            console.log(payload);
+
+            return state;
+          });
+
+
+
+          builder.addCase(addEducation.fulfilled, (state, { payload }) => {
+            state.isUserSliceFetching = false;
+            console.log(payload);
+            state.isUserSliceSuccess = true;
+            state.userSliceSuccessMessage = payload?.message 
+        
+            const updatedPoject = {...state.education, ...payload.data }
+            state.education = updatedPoject;
+      
+            return state;
+          });
+          builder.addCase(addEducation.pending, (state, { payload }) => {
+            state.isUserSliceFetching = true;
+            state.isUserSliceSuccess = false;
+            console.log(payload);
+            
+            return state;
+          });
+          builder.addCase(addEducation.rejected, (state, { payload }) => {
+            state.isUserSliceFetching = false;
+            state.isUserSliceError = true
+            state.userSliceErrorMessage = payload?.message 
+            console.log(payload);
+
+            return state;
+          });
+
+          builder.addCase(addExperience.fulfilled, (state, { payload }) => {
+            state.isUserSliceFetching = false;
+            console.log(payload);
+            state.isUserSliceSuccess = true;
+            state.userSliceSuccessMessage = payload?.message 
+        
+            const updatedPoject = {...state.experience, ...payload.data }
+            state.education = updatedPoject;
+      
+            return state;
+          });
+          builder.addCase(addExperience.pending, (state, { payload }) => {
+            state.isUserSliceFetching = true;
+            state.isUserSliceSuccess = false;
+            console.log(payload);
+            
+            return state;
+          });
+          builder.addCase(addExperience.rejected, (state, { payload }) => {
+            state.isUserSliceFetching = false;
+            state.isUserSliceError = true
+            state.userSliceErrorMessage = payload?.message 
+            console.log(payload);
+
+            return state;
+          });
+
 
         },
         
