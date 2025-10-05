@@ -2,6 +2,7 @@ import React , {useEffect, useState} from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { NavHashLink } from 'react-router-hash-link';
 import "./Header.css"
+import Resume from "../../assests/AnkushKumarJagga.pdf"
 const Header = () => {
   const location = useLocation()
   
@@ -51,6 +52,10 @@ const Header = () => {
       .scrollIntoView({ behavior: 'smooth' });
       setActiveSection(id)
     }
+    const handleDownload = ()=>{
+      alert("This is an Old Resume , will Create new One Soon... 😁");
+      window.open(Resume, "_blank")
+    }
   return (
     <div className='nav'>
     <NavLink to="/"> <h4 className={`logoNav`} >  AJ</h4></NavLink>
@@ -75,7 +80,7 @@ const Header = () => {
           <li  className = {`headerNav ${activeSection === "contactss" ? "active" : ""}`} onClick={() => {
            handleScroll("contactss")
           }}><i class="fa-solid fa-phone"></i> Contact</li>
-    <NavLink to="/okk"  className={`headerNav ${activeSection === "resume" ? "active" : ""}`}><i className="fa-solid fa-download"></i>   Resume</NavLink>
+    <NavLink to="/"  className={`headerNav ${activeSection === "resume" ? "active" : ""}`} onClick={handleDownload}><i className="fa-solid fa-download"></i>   Resume</NavLink>
 
     {/* {navigation.map(nav=>{
       console.log(activeSection === nav.to);

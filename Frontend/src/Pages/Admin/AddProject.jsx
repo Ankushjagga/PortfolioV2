@@ -159,7 +159,7 @@ console.log(inputMessage);
     
         {<span className={"impRed"}> *</span>}
           </label>
-        <input className='file inputBox' type='file' accept='.jpg,.jpeg,.gif,.png' name='image'  onChange={handleChangefile}/>
+        <input className='file inputBox' type='file' accept='.jpg,.jpeg,.gif,.png,.pdf' name='image'  onChange={handleChangefile}/>
           {error.image && <h5 className='errors'>{error.image}</h5>}
         </div>
         <span style={{display: "flex", flexDirection: "column"}}>
