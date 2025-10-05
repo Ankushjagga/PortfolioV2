@@ -80,7 +80,7 @@ const Header = () => {
           <li  className = {`headerNav ${activeSection === "contactss" ? "active" : ""}`} onClick={() => {
            handleScroll("contactss")
           }}><i class="fa-solid fa-phone"></i> Contact</li>
-    <NavLink to="/"  className={`headerNav ${activeSection === "resume" ? "active" : ""}`} onClick={handleDownload}><i className="fa-solid fa-download"></i>   Resume</NavLink>
+    <NavLink   className={`headerNav ${activeSection === "resume" ? "active" : ""}`} onClick={handleDownload}><i className="fa-solid fa-download"></i>   Resume</NavLink>
 
     {/* {navigation.map(nav=>{
       console.log(activeSection === nav.to);
