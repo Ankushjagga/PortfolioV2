@@ -9,9 +9,11 @@ import { languages } from '../Utilis/Utilis'
 const Projects = () => {
     const dispatch = useDispatch()
     const {projects} = useSelector(userData)
-    useEffect(() => {
-    dispatch(getAllProjects())
-    }, [])
+    // useEffect(() => {
+    //     if (!projects || projects.length === 0) {
+    // dispatch(getAllProjects())
+    //     }
+    // }, [projects])
     const getLanguageIcons = (skills) =>{
         const icons = skills.map(skill => {
             const found = languages.find(ele => ele.name === skill);

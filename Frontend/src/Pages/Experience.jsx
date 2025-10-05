@@ -6,9 +6,11 @@ const Experience = () => {
     const dispatch = useDispatch()
     const {experience} = useSelector(userData)
 
-    useEffect(() => {
-   dispatch(getAllExperience())
-    }, [])
+  //   useEffect(() => {
+  //       if (!experience || experience.length === 0) {
+  //  dispatch(getAllExperience())
+  //       }
+  //   }, [experience])
     
   return (
     <div id='experience'>

@@ -7,9 +7,11 @@ const SkillsBox = ({icon , language}) => {
     const dispatch = useDispatch()
     const {skills} = useSelector(userData)
 
-    useEffect(() => {
-   dispatch(getAllSkills())
-    }, [])
+//     useEffect(() => {
+//          if (!skills || skills.length === 0) {
+//    dispatch(getAllSkills())
+//          }
+//     }, [])
 
     const getLanguageIcons = (skill) =>{
         // console.log(skill);

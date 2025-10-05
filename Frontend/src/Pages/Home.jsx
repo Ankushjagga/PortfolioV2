@@ -20,12 +20,14 @@ import Education from './Education';
 import Contact from './Contact';
 import Header from '../components/Header/Header';
 import { useSelector } from 'react-redux';
-import { userData } from '../redux/userSlice';
+import { getAllEduaction, getAllExperience, getAllProjects, getAllSkills, userData } from '../redux/userSlice';
 import {Hourglass} from "react-loader-spinner"
 import Footer from '../components/Footer/Footer';
+import {useDispatch } from "react-redux"
 
 const Home = () => {
     const text = ["Hi 👋, I'm Ankush Kumar Jagga"]
+    const dispatch = useDispatch()
     const [quote,setQuote] = useState("");
     const typing = useTypingEffect(text)
     const {isUserSliceFetching} = useSelector(userData)
@@ -44,6 +46,18 @@ clearInterval(interval)
 }
 
     }, [])
+
+
+useEffect(()=>{
+  alert("Not Responsive , will make it soon 😅")
+    dispatch(getAllProjects())
+       dispatch(getAllEduaction())
+       dispatch(getAllSkills())
+       dispatch(getAllExperience())
+    
+
+},[])
+
     const projects  =[
       "https://res.cloudinary.com/daqnsxiyw/image/upload/v1729265251/foody_hfev38.png",
       "https://res.cloudinary.com/daqnsxiyw/image/upload/v1729265241/book_xvi7dn.png",
@@ -83,9 +97,8 @@ clearInterval(interval)
   wrapperClass="load"
   colors={["#c289c7b9", ' #C2B280']}
   /> 
-  </div>
-  : 
-  
+  </div> 
+  :
   <>
       <Header/> 
 
@@ -150,7 +163,6 @@ clearInterval(interval)
 
        </>
 }
-
        </>
   )
 }

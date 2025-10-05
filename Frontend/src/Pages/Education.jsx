@@ -7,9 +7,11 @@ const Education = () => {
 
     const {education} = useSelector(userData)
 
-    useEffect(() => {
-   dispatch(getAllEduaction())
-    }, [])
+  //   useEffect(() => {
+  //      if (!education || education.length === 0) {
+  //  dispatch(getAllEduaction())
+  //      }
+  //   }, [education])
   return (
     <div id='education'>
     <h1 className='about'> <span className='headColor'> Educ</span>ation</h1>
