@@ -119,9 +119,9 @@ const skillChange =  (e) =>{
     <>
    <AdminHeader/>
    <h1 className='dashboard'> <span className='headColor'> Edit</span> Skills</h1>
-   <form>
+   <form className='formData'>
    <InputBox  labelName={"Name "} name= "name" type={"text"} className={"inputBox"} onChange={handleInput} value={inputMessage.name} isError={error.name ? true : false} erroMessage={error.name}/>
-   Logo Name
+   Logo 
        <Select isMulti = {false} options={iconsOption} onChange = {skillChange}  className='select' value={iconsOption.find((ele)=> ele.value=== inputMessage?.logo)} />
         <button className='btn contactBtn' disabled ={isUserSliceFetchingSmall} onClick={handleSubmit}>Edit <i class="fa-solid fa-pencil"></i> {isUserSliceFetchingSmall && <img className='upload' src={smalluploadLoader} alt='uploading...'/>} </button>
    </form>

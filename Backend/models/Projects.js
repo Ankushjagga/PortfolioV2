@@ -15,6 +15,12 @@ const Project = new mongoose.Schema({
      languages : {
         type : Array,  
     },
+    githubLink : {
+        type : String
+    },
+    liveUrl :{
+        type : String
+    }
   
 },   { timestamps: true })
 

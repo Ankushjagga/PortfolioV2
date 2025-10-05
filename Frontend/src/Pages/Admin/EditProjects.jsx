@@ -9,6 +9,7 @@ import useFileUpload from '../../CustomHooks/useFileUpload'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import "./Admin.css"
 
 const EditProjects = () => {
     const {isUserSliceSuccess , userSliceSuccessMessage , isUserSliceFetchingSmall ,  userSliceErrorMessage , isUserSliceError} = useSelector(userData)
@@ -20,16 +21,22 @@ const EditProjects = () => {
     
     console.log(location);
     const  data = location.state
+    console.log(data);
+    
     const dispatch = useDispatch()
 const [inputMessage , setInputMessage] = useState({
     name :  data?.name ,
     image : data?.image,
-    description : data?.description
+    description : data?.description,
+    githubLink : data?.githubLink,
+    liveUrl : data?.liveUrl
 })
 const [error , setError] = useState({
     name : "",
     image : "",
-    description : ""
+    description : "",
+    githubLink : "",
+    liveUrl : ""
 })
 
 
@@ -45,6 +52,7 @@ useEffect(() => {
         progress: undefined,
         theme: "dark",
         }); 
+        navigate("/adminDashboard")
     }
     return ()=>{
         dispatch(clearAllSliceStates())
@@ -83,14 +91,20 @@ const handleSubmit = (e)=>{
     const errObj = {
         name : "",
         image : "",
-        description : ""
+        description : "",
+        githubLink : "",
+        liveUrl : ""
     }
     let obj = {
         id : id,
         name : inputMessage.name,
         image : inputMessage.image,
-        description : inputMessage.description
+        description : inputMessage.description,
+        githubLink : inputMessage.githubLink,
+        liveUrl : inputMessage.liveUrl
     }
+    console.log(obj);
+    
     if(inputMessage.name === ""){
         errObj.name = "Please enter your description"
     }
@@ -100,7 +114,15 @@ const handleSubmit = (e)=>{
         if(inputMessage.description === ""){
             errObj.description = "Please enter description"
             }
-            if(errObj.name !== "" || errObj.image !== "" || errObj.description !== ""){
+
+if(inputMessage.githubLink === ""){
+            errObj.githubLink = "Please enter github Link"
+            }
+            if(inputMessage.liveUrl === ""){
+            errObj.liveUrl = "Please enter live Url"
+            }
+
+            if(errObj.name !== "" || errObj.image !== "" || errObj.description !== "" || errObj.githubLink != ""|| errObj.liveUrl!=""){
              return    setError(errObj) 
             }
 
@@ -137,22 +159,31 @@ console.log(inputMessage);
     <>
    <AdminHeader/>
    <h1 className='dashboard'> <span className='headColor'> Edit</span> Project</h1>
-   <form>
+   <form className='formData'>
    <InputBox  labelName={"Name "} name= "name" type={"text"} className={"inputBox"} onChange={handleInput} value={inputMessage.name} isError={error.name ? true : false} erroMessage={error.name}/>
-   Image
-        <input className='file' type='file' accept='.jpg,.jpeg,.gif,.png' name='image'  onChange={handleChangefile}/>
-        <h5 className='errors'>{error.image}</h5>
+      <div className='visibleInput'>
+          <label className={"visible"} htmlFor={id}>Image
+
+    
+        {<span className={"impRed"}> *</span>}
+          </label>
+
+        <input className='file inputBox' type='file' accept='.jpg,.jpeg,.gif,.png' name='image' onChange={handleChangefile}/>
+       {error.image && <h5 className='errors'>{error.image}</h5>}
+        </div>
         <span style={{display: "flex", flexDirection: "column"}}>
-        {isFileUploading && <h3>File uploading plese wait ...</h3>}
-        {inputMessage.image && <p>Current Image: <a href={inputMessage.image} target="_blank" rel="noopener noreferrer">View Image</a></p>}
+        {isFileUploading && <h3 style={{display :  isFileUploading ? "visible" : "none" }}>File uploading plese wait ...</h3>}
+        {inputMessage.image && <p className='imageView'>Current Image: <a href={inputMessage.image} target="_blank" rel="noopener noreferrer">View Image</a></p>}
+        </span>
+   <InputBox  labelName={"Github Link"} name= "githubLink" type={"url"} className={"inputBox"} onChange={handleInput} value={inputMessage.githubLink} isError={error.githubLink ? true : false} erroMessage={error.githubLink}/>
+ <InputBox  labelName={"Live Link"} name= "liveUrl" type={"url"} className={"inputBox"} onChange={handleInput} value={inputMessage.liveUrl} isError={error.liveUrl ? true : false} erroMessage={error.liveUrl}/>
         <label for="message" className='visible'>Description <span className={"impRed"}> *</span></label>
         <textarea  className={"inputBox"} onChange={handleInput} name='description' cols={10} rows={6} value={inputMessage.description} />
            <span className='FormError'>  {error.description ? error.description : ""}</span>
-        </span>
         <button className='btn contactBtn' disabled ={isUserSliceFetchingSmall} onClick={handleSubmit}>Edit <i class="fa-solid fa-pencil"></i> {isUserSliceFetchingSmall && <img className='upload' src={smalluploadLoader} alt='uploading...'/>} </button>
    </form>
     
-    <Footer/>]
+    <Footer/>
     </>
   )
 }

@@ -150,14 +150,21 @@ console.log(inputMessage);
     <>
    <AdminHeader/>
    <h1 className='dashboard'> <span className='headColor'> Add</span> Project</h1>
-   <form>
+   <form className='formData'>
    <InputBox  labelName={"Name "} name= "name" type={"text"} className={"inputBox"} onChange={handleInput} value={inputMessage.name} isError={error.name ? true : false} erroMessage={error.name}/>
-   Image
-        <input className='file' type='file' accept='.jpg,.jpeg,.gif,.png' name='image'  onChange={handleChangefile}/>
-        <h5 className='errors'>{error.image}</h5>
+      <div className='visibleInput'>
+
+   <label className={"visible"}>Image
+
+    
+        {<span className={"impRed"}> *</span>}
+          </label>
+        <input className='file inputBox' type='file' accept='.jpg,.jpeg,.gif,.png' name='image'  onChange={handleChangefile}/>
+          {error.image && <h5 className='errors'>{error.image}</h5>}
+        </div>
         <span style={{display: "flex", flexDirection: "column"}}>
-        {isFileUploading && <h3>File uploading plese wait ...</h3>}
-        {inputMessage.image && <p>Current Image: <a href={inputMessage.image} target="_blank" rel="noopener noreferrer">View Image</a></p>}
+        {isFileUploading && <h3 style={{display :  isFileUploading ? "visible" : "none" }}>File uploading plese wait ...</h3>}
+        {inputMessage.image && <p className='imageView'>Current Image: <a href={inputMessage.image} target="_blank" rel="noopener noreferrer">View Image</a></p>}
         
         <label for="skills" className='visible'>Skills <span className={"impRed"}> *</span></label>
         <Select  isMulti options={iconsOption} onChange={skillSelect} className='select'/>
@@ -165,7 +172,7 @@ console.log(inputMessage);
         <textarea  className={"inputBox"} onChange={handleInput} name='description' cols={10} rows={6} value={inputMessage.description} />
            <span className='FormError'>  {error.description ? error.description : ""}</span>
         </span>
-        <button className='btn contactBtn' disabled ={isUserSliceFetchingSmall} onClick={handleSubmit}>Edit <i class="fa-solid fa-pencil"></i> {isUserSliceFetchingSmall && <img className='upload' src={smalluploadLoader} alt='uploading...'/>} </button>
+        <button className='btn contactBtn' disabled ={isUserSliceFetchingSmall} onClick={handleSubmit}>Add + {isUserSliceFetchingSmall && <img className='upload' src={smalluploadLoader} alt='uploading...'/>} </button>
    </form>
     
     <Footer/>]

@@ -405,6 +405,7 @@ text-align: center;
 }
 .select{
   color: #000000;
+  width: 70vh;
 }
 .addProject{
   display: flex;

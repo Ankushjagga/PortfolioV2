@@ -96,7 +96,7 @@ Navigate(`/editSkill/${ele._id}` ,{
 })
 break; 
 default :
-Navigate(`/editProjectsad`)
+Navigate(`/editProjects`)
         }
        
       }

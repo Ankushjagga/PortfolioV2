@@ -314,9 +314,9 @@ const addProjects = async (req,res)=>{
 
     try {
 
-        const {description , name  , image, languages} = req.body
+        const {description , name  , image, languages , githubLink , liveUrl} = req.body
        const data = await new  projectModel({
-        name, image , description, languages
+        name, image , description, languages , githubLink , liveUrl
        })
        await data.save()
        resObj.isSuccess = true
@@ -466,9 +466,9 @@ const editProjects = async (req,res)=>{
 
     try {
 
-        const {description , name  , image, languages} = req.body
+        const {description , name  , image, languages , githubLink , liveUrl} = req.body
        const data = await   projectModel.findByIdAndUpdate( req.params.id ,  {
-        $set: { name, image , description, languages}
+        $set: { name, image , description, languages, githubLink , liveUrl}
        } ,
        { new: true } )
        await data.save()
