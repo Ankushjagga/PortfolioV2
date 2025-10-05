@@ -15,7 +15,7 @@ const About = () => {
     <h1 className='about'> <span className='headColor'> About</span> Me</h1>
     <div className='profileImage'>
 
-    <img src='https://res.cloudinary.com/daqnsxiyw/image/upload/v1729273711/WhatsApp_Image_2024-10-18_at_11.17.22_PM_fiszoh.jpg' alt='my-image' className='profile'/>
+    <img src='https://res.cloudinary.com/daqnsxiyw/image/upload/v1759656494/1759654574052_uzuiqs.png' alt='my-image' className='profile'/>
     </div>
     <div className='terminal-wraper'>
 

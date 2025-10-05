@@ -31,7 +31,7 @@ const Projects = () => {
         return (
           <>
           <ProjectsBox image={ele?.image} Title={ele?.name} 
-            liveLink={"https://foody-pvp6.onrender.com/"} githubLink={"https://github.com/Ankushjagga/Foody"} 
+            liveLink={ele?.liveUrl} githubLink={ele?.githubLink} 
             description={ele?.description} icons={getLanguageIcons(ele?.languages)} className= "project"
     /> 
           </>

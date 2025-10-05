@@ -136,7 +136,7 @@ useEffect(() => {
    <AdminHeader/>
    <div className="container" id="container">
     <div className="details">
-		<img className='login-img' src="https://res.cloudinary.com/daqnsxiyw/image/upload/v1724395544/Login_xvhbbh.png" alt='img' />
+		<img className='login-img' src="https://res.cloudinary.com/daqnsxiyw/image/upload/v1736792343/Login-pana_frcgub.png" alt='img' />
 		</div>
 	<div className="login-in-container">
 <form method='POST' className='loginForm'>
