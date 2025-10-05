@@ -71,7 +71,7 @@ clearInterval(interval)
 
   return (
     <>
-    {isUserSliceFetching &&
+    {isUserSliceFetching ?
     <div className='loading'>
 {/* <h1>loadinggg</h1> */}
     <Hourglass
@@ -83,7 +83,8 @@ clearInterval(interval)
   wrapperClass="load"
   colors={["#c289c7b9", ' #C2B280']}
   /> 
-  </div> }
+  </div>
+  : 
   
   <>
       <Header/> 
@@ -148,6 +149,7 @@ clearInterval(interval)
   <Footer/>
 
        </>
+}
 
        </>
   )
