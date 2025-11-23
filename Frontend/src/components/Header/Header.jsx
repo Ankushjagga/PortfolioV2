@@ -53,7 +53,7 @@ const Header = () => {
       setActiveSection(id)
     }
     const handleDownload = ()=>{
-      alert("This is an Old Resume , will Create new One Soon... 😁");
+      // alert("This is an Old Resume , will Create new One Soon... 😁");
       window.open(Resume, "_blank")
     }
   return (

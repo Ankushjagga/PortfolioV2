@@ -49,7 +49,7 @@ clearInterval(interval)
 
 
 useEffect(()=>{
-  alert("Not Responsive , will make it soon 😅")
+  // alert("Not Responsive , will make it soon 😅")
     dispatch(getAllProjects())
        dispatch(getAllEduaction())
        dispatch(getAllSkills())
