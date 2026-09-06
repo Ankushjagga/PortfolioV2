@@ -180,15 +180,15 @@ console.log(inputMessage);
         {isFileUploading && <h3>File uploading plese wait ...</h3>}
         {inputMessage.image && <p>Current Image: <a href={inputMessage.image} target="_blank" rel="noopener noreferrer">View Image</a></p>}
         <InputBox  labelName={"specialization"} name= "specialization" type={"text"} className={"inputBox"} onChange={handleInput} value={inputMessage.specialization} isError={error.specialization ? true : false} erroMessage={error.specialization}/>
-        <label for="message" className='visible'>Description <span className={"impRed"}> *</span></label>
-        <textarea  className={"inputBox"} onChange={handleInput} name='description' cols={10} rows={6} value={inputMessage.description} />
+        <label htmlFor="description" className='visible'>Description <span className={"impRed"}> *</span></label>
+        <textarea id='description' className={"inputBox"} onChange={handleInput} name='description' cols={10} rows={6} value={inputMessage.description} />
            <span className='FormError'>  {error.description ? error.description : ""}</span>
            <InputBox  labelName={"startDate"} name='startDate' type={"date"} className={"inputBox"} onChange={handleInput} value={moment(inputMessage.startDate).format('YYYY-MM-DD')} isError={error.startDate ? true : false} erroMessage={error.startDate}/>
            <InputBox  labelName={"endDate"} name='endDate' type={"date"} className={"inputBox"} onChange={handleInput} value={moment(inputMessage.endDate).format('YYYY-MM-DD')} isError={error.endDate ? true : false} erroMessage={error.endDate}/>
 
         </span>
   
-        <button className='btn contactBtn' disabled ={isUserSliceFetchingSmall} onClick={handleSubmit}>Edit <i class="fa-solid fa-pencil"></i> {isUserSliceFetchingSmall && <img className='upload' src={smalluploadLoader} alt='uploading...'/>} </button>
+        <button className='btn contactBtn' disabled ={isUserSliceFetchingSmall} onClick={handleSubmit}>Edit <i className="fa-solid fa-pencil"></i> {isUserSliceFetchingSmall && <img className='upload' src={smalluploadLoader} alt='uploading...'/>} </button>
    </form>
     
     <Footer/>]

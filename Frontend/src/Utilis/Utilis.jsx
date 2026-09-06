@@ -46,7 +46,7 @@ export const languages = [
     { name: "native"  ,  icon  : <TbBrandReactNative className="react" /> },
     { name: "c"  ,  icon  : <i className="fa-solid fa-c"></i> },
     { name: "c++"  ,  icon  : <i className="fa-solid fa-c">++</i> },
-    { name: "git"  ,  icon  : <i class="fa-brands fa-git-alt"></i> },
+    { name: "git"  ,  icon  : <i className="fa-brands fa-git-alt"></i> },
     
 ]
  

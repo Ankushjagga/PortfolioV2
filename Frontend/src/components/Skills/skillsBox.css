@@ -1,88 +1,86 @@
-.counter{
-    /* flex:1 1 48rem; */
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 4rem;
+/* Auto-fitting grid: the tile count per row follows the viewport instead of
+   being decided by fixed widths and margins. */
+.counter {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: clamp(1.2rem, 2.5vw, 2.4rem);
+    max-width: 110rem;
+    margin: clamp(2rem, 5vw, 4rem) auto;
+    padding: 0 var(--pagePadding);
 }
 
- .counter .box{
-    width:20rem;
-    background:#222;
+.counter .box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
     text-align: center;
-    padding: 2rem;
-    margin:2rem;
+    padding: clamp(1.6rem, 3vw, 2.4rem) 1rem;
     cursor: pointer;
-    height: 20rem;
+    min-height: 14rem;
     justify-content: center;
     align-items: center;
     display: flex;
     flex-direction: column;
-    box-shadow: #c289c7b9 5px 5px 5px;
-
+    gap: 1rem;
+    width: auto;
+    height: auto;
+    margin: 0;
 }
 
-  .counter .box span{
-    font-size: 4rem;
-    color:#c289c7b9;
+.counter .box:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-accent);
 }
 
- .counter .box h3{
-    font-size: 2rem;
-    color:#fff;
-}
-.counter .box:hover i{
-    color:#c289c7b9;
-
+.counter .box > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
 
+.counter .box span {
+    font-size: clamp(3rem, 2rem + 2vw, 4rem);
+    color: var(--accent);
+    line-height: 1;
+}
 
-.fa-linkedin{
-    color: #0a66c2;
+.counter .box h3 {
+    font-size: clamp(1.4rem, 1.2rem + .5vw, 1.8rem);
+    color: var(--text);
+    margin: 0;
 }
-.fa-github{
-    color: white;
-}
-.fa-facebook{
-    color: #4267B2;
-}
-.fa-instagram{
-    color:  palevioletred;
-}
-.fa-c{
-    color: #4267B2;
 
+.counter .box:hover i {
+    color: var(--accent);
 }
-.nodes{
-    color: green;
-}
-.fa-database{
-    color: greenyellow;
-}
-.html{
-    color: #f06529 !important ;
-}
-.fa-css3-alt{
-    color: #2965f1;
-}
-.js{
-    color: yellow;
-}
-.react{
-    color: #61DBFB;
-}
-.fa-git-alt{
-   color: #F1502F;
-}
-.express{
-   color:  #5c4949
-}
-.sql , .sequelzie{
-    color: #00758f;
-}
-.redis{
-    color :  #7A0C00
-}
-.docker{
-    color:  #0db7ed
+
+/* Per-language brand colours */
+.fa-linkedin { color: #0a66c2; }
+.fa-github { color: #fff; }
+.fa-facebook { color: #4267B2; }
+.fa-instagram { color: palevioletred; }
+.fa-c { color: #4267B2; }
+.nodes { color: #3c873a; }
+.fa-database { color: greenyellow; }
+.html { color: #f06529 !important; }
+.fa-css3-alt { color: #2965f1; }
+.js { color: #f0db4f; }
+.react { color: #61DBFB; }
+.fa-git-alt { color: #F1502F; }
+.express { color: #8a7a7a; }
+.sql, .sequelzie { color: #00758f; }
+.redis { color: #d64c3c; }
+.docker { color: #0db7ed; }
+
+@media (max-width: 480px) {
+    .counter {
+        grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    }
+
+    .counter .box {
+        min-height: 11rem;
+        padding: 1.4rem .8rem;
+    }
 }

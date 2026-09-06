@@ -114,7 +114,7 @@ useEffect(()=>{
      className='marquee'
      >
       {projects.map(ele=>{
-        return  <img src={ele} alt="project"  className='marqueeImg'/>
+        return  <img key={ele} src={ele} alt="project"  className='marqueeImg' loading="lazy"/>
       })}
      </Marquee>
 
@@ -125,7 +125,7 @@ useEffect(()=>{
      direction='right'
      >
       {skills.map(ele=>{
-        return  <h1 className='marqueetext'>{ele}</h1>
+        return  <h1 key={ele} className='marqueetext'>{ele}</h1>
       })}
      </Marquee>
      <Marquee 

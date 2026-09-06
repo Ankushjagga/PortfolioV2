@@ -144,11 +144,11 @@ useEffect(() => {
             {skills && skills?.length && (
                 skills?.map((skill, index) => (
                     <tr key={skill._id}>
-                        <td>{index + 1}</td>
-                        <td>{skill.name}</td>
-                        <td> <span className='dashboard-img'> {getLanguageIcons(skill?.logo)}</span></td>
-                        <td onClick={()=> handleEdit(skill, "skill")}><i class="fa-solid fa-pencil" style={{cursor : "pointer"}}></i></td>
-                        <td onClick={()=> handleDelete(skill, "skill")}><i class="fa-solid fa-trash" style={{cursor : "pointer"}}></i></td>
+                        <td data-label="S. No.">{index + 1}</td>
+                        <td data-label="Name">{skill.name}</td>
+                        <td data-label="Image"> <span className='dashboard-img'> {getLanguageIcons(skill?.logo)}</span></td>
+                        <td data-label="Action" onClick={()=> handleEdit(skill, "skill")}><i className="fa-solid fa-pencil" style={{cursor : "pointer"}}></i></td>
+                        <td data-label="Action" onClick={()=> handleDelete(skill, "skill")}><i className="fa-solid fa-trash" style={{cursor : "pointer"}}></i></td>
                        
 
                     </tr>

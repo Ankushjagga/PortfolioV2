@@ -177,10 +177,10 @@ console.log(inputMessage);
         </span>
    <InputBox  labelName={"Github Link"} name= "githubLink" type={"url"} className={"inputBox"} onChange={handleInput} value={inputMessage.githubLink} isError={error.githubLink ? true : false} erroMessage={error.githubLink}/>
  <InputBox  labelName={"Live Link"} name= "liveUrl" type={"url"} className={"inputBox"} onChange={handleInput} value={inputMessage.liveUrl} isError={error.liveUrl ? true : false} erroMessage={error.liveUrl}/>
-        <label for="message" className='visible'>Description <span className={"impRed"}> *</span></label>
-        <textarea  className={"inputBox"} onChange={handleInput} name='description' cols={10} rows={6} value={inputMessage.description} />
+        <label htmlFor="description" className='visible'>Description <span className={"impRed"}> *</span></label>
+        <textarea id='description' className={"inputBox"} onChange={handleInput} name='description' cols={10} rows={6} value={inputMessage.description} />
            <span className='FormError'>  {error.description ? error.description : ""}</span>
-        <button className='btn contactBtn' disabled ={isUserSliceFetchingSmall} onClick={handleSubmit}>Edit <i class="fa-solid fa-pencil"></i> {isUserSliceFetchingSmall && <img className='upload' src={smalluploadLoader} alt='uploading...'/>} </button>
+        <button className='btn contactBtn' disabled ={isUserSliceFetchingSmall} onClick={handleSubmit}>Edit <i className="fa-solid fa-pencil"></i> {isUserSliceFetchingSmall && <img className='upload' src={smalluploadLoader} alt='uploading...'/>} </button>
    </form>
     
     <Footer/>

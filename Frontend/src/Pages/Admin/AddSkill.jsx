@@ -10,6 +10,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Select from "react-select"
+import selectStyles from "../../Utilis/selectStyles"
 import { iconsOption } from '../../Utilis/Utilis'
 const AddSkill = () => {
     const {isUserSliceSuccess , userSliceSuccessMessage , isUserSliceFetchingSmall ,  userSliceErrorMessage , isUserSliceError} = useSelector(userData)
@@ -117,8 +118,8 @@ const skillChange =  (e) =>{
    <form>
    <InputBox  labelName={"Name "} name= "name" type={"text"} className={"inputBox"} onChange={handleInput} value={inputMessage.name} isError={error.name ? true : false} erroMessage={error.name}/>
    Logo Name
-       <Select isMulti = {false} options={iconsOption} onChange = {skillChange}  className='select'  />
-        <button className='btn contactBtn' disabled ={isUserSliceFetchingSmall} onClick={handleSubmit}>Add <i class="fa-solid fa-pencil"></i> {isUserSliceFetchingSmall && <img className='upload' src={smalluploadLoader} alt='uploading...'/>} </button>
+       <Select styles={selectStyles} isMulti = {false} options={iconsOption} onChange = {skillChange}  className='select'  />
+        <button className='btn contactBtn' disabled ={isUserSliceFetchingSmall} onClick={handleSubmit}>Add <i className="fa-solid fa-pencil"></i> {isUserSliceFetchingSmall && <img className='upload' src={smalluploadLoader} alt='uploading...'/>} </button>
    </form>
     
     <Footer/>]

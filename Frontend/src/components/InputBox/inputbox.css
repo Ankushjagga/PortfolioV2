@@ -1,10 +1,27 @@
-.visibleInput{
+.visibleInput {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
-.visible{
-    font-size: 1.5rem;
+
+.visible {
+    font-size: 1.4rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    letter-spacing: .02em;
 }
-.impRed , .FormError{
-    color: red;
+
+.impRed {
+    color: #ff6b6b;
+}
+
+/* Keeps a constant line of space under each field so the layout does not shift
+   when a validation message appears. */
+.FormError {
+    color: #ff6b6b;
+    font-size: 1.3rem;
+    min-height: 1.7rem;
+    display: block;
+    margin-top: -1rem;
+    margin-bottom: .8rem;
 }

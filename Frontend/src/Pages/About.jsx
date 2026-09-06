@@ -1,21 +1,22 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import Terminal, { ColorMode, TerminalOutput } from 'react-terminal-ui';
+import profileImg from '../assests/profile.jpg';
 const About = () => {
   const [terminalLineData, setTerminalLineData] = useState([
-    <TerminalOutput id = "terminal">$ npm install about_ankush</TerminalOutput>,
-      <TerminalOutput>loading...</TerminalOutput>,
-    <TerminalOutput>identity adding...</TerminalOutput>,
-    <TerminalOutput className= "terminal">$ name: Ankush Kumar Jagga</TerminalOutput>,
-    <TerminalOutput className= "terminal">$ Profession: Full Stack Developer</TerminalOutput>,
-    <TerminalOutput className= "terminal">$Current Company: Masters Union </TerminalOutput>
+    <TerminalOutput key={0} id = "terminal">$ npm install about_ankush</TerminalOutput>,
+      <TerminalOutput key={1}>loading...</TerminalOutput>,
+    <TerminalOutput key={2}>identity adding...</TerminalOutput>,
+    <TerminalOutput key={3} className= "terminal">$ name: Ankush Kumar Jagga</TerminalOutput>,
+    <TerminalOutput key={4} className= "terminal">$ Profession: Full Stack Developer</TerminalOutput>,
+    <TerminalOutput key={5} className= "terminal">$Current Company: Masters Union </TerminalOutput>
   ]);
   return (
     <div id='about'>
     <h1 className='about'> <span className='headColor'> About</span> Me</h1>
     <div className='profileImage'>
 
-    <img src='https://res.cloudinary.com/daqnsxiyw/image/upload/v1759656494/1759654574052_uzuiqs.png' alt='my-image' className='profile'/>
+    <img src={profileImg} alt='Ankush Kumar Jagga' className='profile'/>
     </div>
     <div className='terminal-wraper'>
 

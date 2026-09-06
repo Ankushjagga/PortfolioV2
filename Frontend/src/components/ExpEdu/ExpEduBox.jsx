@@ -1,47 +1,43 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import moment from "moment"
 
-const ExpEduBox = ({title , data}) => {
+const formatRange = (start, end) => {
+  const from = start ? moment(start).format("MMM YYYY") : ""
+  const to = end ? moment(end).format("MMM YYYY") : "Present"
+  return from ? `${from} - ${to}` : to
+}
 
+const ExpEduBox = ({ title, data }) => {
   return (
     <>
-    <h1 id="feel" style={{textAlign:"center"}}>{title} </h1>
-    {data?.map((ele=>{
-        // console.log(ele?.startDate);
-        
-        return (
-            <div className='expDetail'  key={ele.id}>
+      <h1 id="feel" style={{ textAlign: "center" }}>{title}</h1>
 
-            <div className='experineceInner'>
-            <p className='time'>{ele?.startdate} - {ele?.enddate ? ele?.enddate : "Present"}</p>
-    
-    <img className='expImg' src={ele?.image} alt='img'/>
+      {data?.map((ele) => (
+        <div className='expDetail' key={ele._id || ele.role || ele.school}>
+          <div className='experineceInner'>
+            {/* The API returns startDate / endDate; the old lowercase keys never
+                matched, so every entry rendered as "Present". */}
+            <p className='time'>{formatRange(ele?.startDate, ele?.endDate)}</p>
 
-                <div className='exp'>
- 
-                <div>
+            <div className='exp'>
+              {ele?.image && (
+                <img className='expImg' src={ele.image} alt={ele?.company || ele?.school || ""} loading="lazy" />
+              )}
+
+              <div>
                 <h1>{ele?.role || ele?.school}</h1>
-                <h2 style={{opacity: 0.6}}>{ele?.company || ele?.specialization}</h2>
+                <h2 style={{ opacity: 0.6 }}>{ele?.company || ele?.specialization}</h2>
+
                 <ul className='description'>
-                {Array.isArray(ele?.description) ? (
-    <ul>
-        {ele.description.map((desc, index) => (
-            <li key={index}>{desc}</li> 
-        ))}
-    </ul>
-) : (
-    <li>{ele?.description}</li> 
-)}
+                  {Array.isArray(ele?.description)
+                    ? ele.description.map((desc, index) => <li key={index}>{desc}</li>)
+                    : <li>{ele?.description}</li>}
                 </ul>
-                </div>
-                </div>
-                
+              </div>
             </div>
-           
+          </div>
         </div>
-        )
-    }))}
- 
+      ))}
     </>
   )
 }

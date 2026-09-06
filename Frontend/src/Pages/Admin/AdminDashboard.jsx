@@ -159,12 +159,12 @@ Navigate(`/editProjects`)
             {projects && projects?.length && (
                 projects?.map((project, index) => (
                     <tr key={project._id}>
-                        <td>{index + 1}</td>
-                        <td>{project.name}</td>
-                        <td><img src= {project?.image} className="dash-img"  alt={project?.name} /></td>
-                        <td>{project.description.slice(0,100) + "..."}</td>
-                        <td onClick={()=> handleEdit(project , "project")}><i class="fa-solid fa-pencil" style={{cursor : "pointer"}}></i></td>
-                        <td onClick={()=> handleDelete(project , "project")}><i class="fa-solid fa-trash" style={{cursor : "pointer"}}></i></td>
+                        <td data-label="S. No.">{index + 1}</td>
+                        <td data-label="Name">{project.name}</td>
+                        <td data-label="Image"><img src= {project?.image} className="dash-img"  alt={project?.name} /></td>
+                        <td data-label="Description">{project.description.slice(0,100) + "..."}</td>
+                        <td data-label="Action" onClick={()=> handleEdit(project , "project")}><i className="fa-solid fa-pencil" style={{cursor : "pointer"}}></i></td>
+                        <td data-label="Action" onClick={()=> handleDelete(project , "project")}><i className="fa-solid fa-trash" style={{cursor : "pointer"}}></i></td>
                        
 
                     </tr>
@@ -189,11 +189,11 @@ Navigate(`/editProjects`)
             {skills && skills?.length && (
                 skills?.map((skill, index) => (
                     <tr key={skill._id}>
-                        <td>{index + 1}</td>
-                        <td>{skill.name}</td>
-                        <td> <span className='dashboard-img'> {getLanguageIcons(skill?.logo)}</span></td>
-                        <td onClick={()=> handleEdit(skill, "skill")}><i class="fa-solid fa-pencil" style={{cursor : "pointer"}}></i></td>
-                        <td onClick={()=> handleDelete(skill, "skill")}><i class="fa-solid fa-trash" style={{cursor : "pointer"}}></i></td>
+                        <td data-label="S. No.">{index + 1}</td>
+                        <td data-label="Name">{skill.name}</td>
+                        <td data-label="Image"> <span className='dashboard-img'> {getLanguageIcons(skill?.logo)}</span></td>
+                        <td data-label="Action" onClick={()=> handleEdit(skill, "skill")}><i className="fa-solid fa-pencil" style={{cursor : "pointer"}}></i></td>
+                        <td data-label="Action" onClick={()=> handleDelete(skill, "skill")}><i className="fa-solid fa-trash" style={{cursor : "pointer"}}></i></td>
                        
 
                     </tr>
@@ -218,13 +218,13 @@ Navigate(`/editProjects`)
     </thead>
         {messages && messages?.length ? (
           messages?.map((message, index) => (
-              <tbody>
-                <tr key={message._id}>
-                    <td>{index + 1}</td>
-                    <td>{message.userId.name}</td>
-                    <td>{message.userId.email}</td>
-                    <td> {message.message} </td>
-                    <td onClick={()=> handleDelete(message , "message")}><i class="fa-solid fa-trash" style={{cursor : "pointer"}}></i></td>
+              <tbody key={message._id}>
+                <tr>
+                    <td data-label="S. No.">{index + 1}</td>
+                    <td data-label="Name">{message.userId.name}</td>
+                    <td data-label="email">{message.userId.email}</td>
+                    <td data-label="Message"> {message.message} </td>
+                    <td data-label="Action" onClick={()=> handleDelete(message , "message")}><i className="fa-solid fa-trash" style={{cursor : "pointer"}}></i></td>
                    
 
                 </tr>

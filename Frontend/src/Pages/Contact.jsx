@@ -78,16 +78,12 @@ return () => {
         <InputBox  ref= {inputRef} labelName={"email"}  name = "email" type={"text"} className={"inputBox"} onChange={handleInput} value={inputMessage.email} isError={error.email ? true :false} erroMessage={error.email}/>
         <span style={{display: "flex", flexDirection: "column"}}>
 
-        <label for="message" className='visible'>Message <span className={"impRed"}> *</span></label>
-        <textarea  ref= {inputRef} className={"inputBox"} onChange={handleInput} name='message' cols={10} rows={6} value={inputMessage.message} />
+        <label htmlFor="message" className='visible'>Message <span className={"impRed"}> *</span></label>
+        <textarea  ref= {inputRef} id='message' className={"inputBox"} onChange={handleInput} name='message' cols={10} rows={6} value={inputMessage.message} />
            <span className='FormError'>  {error.message ? error.message : ""}</span>
         </span>
         <button className='btn contactBtn' disabled ={isUserSliceFetchingSmall} onClick={handleSubmit}>Send <i className="fa-solid fa-rocket"></i> {isUserSliceFetchingSmall && <img className='upload' src={smalluploadLoader} alt='uploading...'/>} </button>
         </div>
-        <span className='gokuDiv'> 
-
-        <img src='https://res.cloudinary.com/daqnsxiyw/image/upload/v1729349612/thumb-1920-956998-transformed_tvfcci.png' alt='goku' className='gokuImg'/>
-        </span>
     </div>
     
     </div>

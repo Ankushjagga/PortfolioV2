@@ -1,117 +1,136 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(1rem, 4vw, 4rem);
+    flex-wrap: wrap;
+    padding: clamp(2rem, 5vw, 5rem) var(--pagePadding);
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+.details {
+    width: min(100%, 45rem);
+    display: flex;
+    justify-content: center;
+}
+
+.login-img {
+    width: 100%;
+    max-width: 42rem;
+    height: auto;
+    -webkit-animation: mover 3s infinite alternate;
+    animation: mover 3s infinite alternate;
+}
+
+.login-in-container,
+.sign-up-container {
+    width: min(100%, 44rem);
+}
+
 .loginForm {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	flex-direction: column;
-	text-align: center;
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    text-align: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: clamp(2rem, 4vw, 3.5rem);
+    box-shadow: var(--shadow);
 }
 
-
-    .inp {
-        padding: 2rem;
-        margin: 1rem 0;
-        text-transform: none;
-        font-size: 1.2rem;
-        width: 30rem;
-        background: transparent;
-        border:  1px solid  gray;
-        color: white;
-  
+.loginForm h1 {
+    margin: 0 0 1.5rem;
+    font-size: clamp(2.4rem, 1.8rem + 2vw, 3.2rem);
 }
 
-
-
-
-#select{
-    width: 30rem;
+.inp {
+    padding: 1.4rem 1.6rem;
+    margin: .8rem 0 0;
+    text-transform: none;
+    font-size: var(--fs-body);
+    width: 100%;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: .8rem;
+    color: var(--text);
 }
-.ghostbtn{
+
+.inp::placeholder {
+    color: #6f6f78;
+}
+
+.inp:hover {
+    border-color: var(--border-strong);
+}
+
+.inp:focus {
+    border-color: var(--accent);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(194, 137, 199, .18);
+}
+
+/* Reserves room for the inline validation message so the form does not jump. */
+.loginForm .FormError {
+    min-height: 1.8rem;
+    margin: .5rem 0 .3rem;
+    font-size: 1.3rem;
+    font-weight: 400;
+    text-align: left;
+}
+
+.passwordSpan {
+    position: relative;
+    display: block;
+}
+
+.passwordSpan > .fa-solid {
+    position: absolute;
+    right: 1.4rem;
+    top: 2.4rem;
+    cursor: pointer;
+    color: var(--text-muted);
+    padding: .5rem;
+}
+
+.passwordSpan > .fa-solid:hover {
+    color: var(--accent);
+}
+
+#select,
+#bt {
+    width: 100%;
+}
+
+.ghostbtn {
     margin: 1rem;
     padding: 1rem;
-    font-size: 1rem;
-}
-
-#bt{
-    padding:1rem 2rem;
-font-size: 1rem;
-
-}
-.container {
-  	display: flex;justify-content: center;
-    align-items: center;
-	overflow: hidden;
-	max-width: 100%;
-	/* min-height: 65vh; */
-}
-
-.details{
-    width: 50%;
-}
-.login-in-container, .sign-up-container{
-	/* display: flex; */
-    /* border: 1px solid  #a4af0ed2; */
-    width: 50%;
-    
-flex-wrap: wrap;
-}
-
-#bt:hover{
-    background-color: var(--rootColor) ;
-}
-#bt:active{
-
-    transform: translateY(.3rem)
-}
-.login-img{
-    width: 32vw;
-    margin: 3rem 0rem 2rem 8rem ;
-    -webkit-animation: mover 3s infinite  alternate;
-    animation: mover 3s infinite  alternate;
+    font-size: 1.4rem;
 }
 
 @-webkit-keyframes mover {
     0% { transform: translateY(0); }
     100% { transform: translateY(-10px); }
 }
+
 @keyframes mover {
     0% { transform: translateY(0); }
     100% { transform: translateY(-10px); }
 }
-.passwordSpan{
-    position: relative;
-}
-  .passwordSpan>.fa-solid{
-    position: absolute;
-    right: 4%;
-    top: 40%;
-    cursor: pointer;
-  }
-@media (max-width:991px) {
-    .login-in-container{
-        height: auto;
-    }
-    .loginForm,.details{
-        width: 100vw;
-        height: 100vh;
-    }
-    .inp{
 
-        padding: 2rem;
-        width: 80vw;
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
     }
-   
-    #bt{
-        font-size: 1.5rem;
+
+    /* The illustration is decoration; on a phone the form should lead. */
+    .details {
+        order: 2;
+        max-width: 30rem;
     }
-.ghostbtn,.details>p{
-    font-size: 2rem;
-}
-.details>h1{
-    font-size: 4rem;
-}
-}
-@media (max-width:401px) {
-.inp{
-    width: 60vw;
-}
+
+    .login-in-container {
+        order: 1;
+    }
 }

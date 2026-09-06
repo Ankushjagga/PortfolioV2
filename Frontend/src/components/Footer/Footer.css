@@ -1,33 +1,46 @@
-.footer{
+.footer {
     display: flex;
-    justify-content: space-around;
-    font-size: 1.5rem;
-    color: white;
-    background-color: black;
-    padding: .5rem;
-    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    font-size: 1.4rem;
+    color: var(--text-muted);
+    background-color: #000;
+    border-top: 1px solid var(--border);
+    padding: clamp(2rem, 4vw, 3rem) var(--pagePadding);
+    margin-top: clamp(4rem, 8vw, 8rem);
 }
-.footer>h4{
-    margin: 2rem;
-}
-.foo-connect i{
-    padding:  0 1rem;
-    color:#c289c7b9;
 
+.footer > h4 {
+    margin: 0;
+    font-weight: 400;
+    font-size: inherit;
 }
-.connect{
-    /* display: flex; */
-    justify-content: center;
-    text-align: center;
-    padding: 2rem;
-    color: white;
 
+.foo-connect {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
 }
-.connect h1{
-    margin: 1rem;
+
+.foo-connect i {
+    padding: 0 1rem;
+    font-size: 2rem;
 }
-.links-connect i {
-    padding:  0 1rem;
-    font-size: 2.5rem;
+
+.footer a:hover {
+    color: var(--accent);
+}
+
+.footer p {
+    margin: 0;
+}
+
+@media (max-width: 700px) {
+    .footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.2rem;
+    }
 }

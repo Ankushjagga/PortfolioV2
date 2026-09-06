@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
+import { authHeaders, handleUnauthorized } from "../Utilis/api";
 let userId;
 let email;
  
@@ -203,6 +204,7 @@ Cookies.get("loginData") !== "undefined" && Cookies.get("loginData")
             headers: {
               Accept: "application/json",
               "Content-Type": "application/json",
+              ...authHeaders(),
             },
           });
           const data = await response.json();
@@ -215,6 +217,7 @@ Cookies.get("loginData") !== "undefined" && Cookies.get("loginData")
           } else {
               console.log(data);
               
+            handleUnauthorized(response?.status);
             return thunkAPI.rejectWithValue(data);
           }
         } catch (e) {
@@ -239,6 +242,7 @@ Cookies.get("loginData") !== "undefined" && Cookies.get("loginData")
             headers: {
               Accept: "application/json",
               "Content-Type": "application/json",
+              ...authHeaders(),
             },
           });
           const data = await response.json();
@@ -251,6 +255,7 @@ Cookies.get("loginData") !== "undefined" && Cookies.get("loginData")
           } else {
               console.log(data);
               
+            handleUnauthorized(response?.status);
             return thunkAPI.rejectWithValue(data);
           }
         } catch (e) {
@@ -274,6 +279,7 @@ Cookies.get("loginData") !== "undefined" && Cookies.get("loginData")
                 headers: {
                   Accept: "application/json",
                   "Content-Type": "application/json",
+                  ...authHeaders(),
                 },
               });
               const data = await response.json();
@@ -286,6 +292,7 @@ Cookies.get("loginData") !== "undefined" && Cookies.get("loginData")
               } else {
                   console.log(data);
                   
+                handleUnauthorized(response?.status);
                 return thunkAPI.rejectWithValue(data);
               }
             } catch (e) {
@@ -310,6 +317,7 @@ Cookies.get("loginData") !== "undefined" && Cookies.get("loginData")
                   headers: {
                     Accept: "application/json",
                     "Content-Type": "application/json",
+                    ...authHeaders(),
                   },
                 });
                 const data = await response.json();
@@ -322,6 +330,7 @@ Cookies.get("loginData") !== "undefined" && Cookies.get("loginData")
                 } else {
                     console.log(data);
                     
+                  handleUnauthorized(response?.status);
                   return thunkAPI.rejectWithValue(data);
                 }
               } catch (e) {
@@ -345,6 +354,7 @@ Cookies.get("loginData") !== "undefined" && Cookies.get("loginData")
                 headers: {
                   Accept: "application/json",
                   "Content-Type": "application/json",
+                  ...authHeaders(),
                 },
               });
               const data = await response.json();
@@ -357,6 +367,7 @@ Cookies.get("loginData") !== "undefined" && Cookies.get("loginData")
               } else {
                   console.log(data);
                   
+                handleUnauthorized(response?.status);
                 return thunkAPI.rejectWithValue(data);
               }
             } catch (e) {
@@ -381,6 +392,7 @@ Cookies.get("loginData") !== "undefined" && Cookies.get("loginData")
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
+          ...authHeaders(),
         },
       });
       const data = await response.json();
@@ -393,6 +405,7 @@ Cookies.get("loginData") !== "undefined" && Cookies.get("loginData")
       } else {
           console.log(data);
           
+        handleUnauthorized(response?.status);
         return thunkAPI.rejectWithValue(data);
       }
     } catch (e) {
@@ -419,6 +432,7 @@ Cookies.get("loginData") !== "undefined" && Cookies.get("loginData")
                   headers: {
                     Accept: "application/json",
                     "Content-Type": "application/json",
+                    ...authHeaders(),
                   },
                   body : JSON.stringify(obj)
                 });
@@ -432,6 +446,7 @@ Cookies.get("loginData") !== "undefined" && Cookies.get("loginData")
                 } else {
                     console.log(data);
                     
+                  handleUnauthorized(response?.status);
                   return thunkAPI.rejectWithValue(data);
                 }
               } catch (e) {
@@ -455,6 +470,7 @@ export const editSkill = createAsyncThunk(
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
+          ...authHeaders(),
         },
         body : JSON.stringify(obj)
       });
@@ -468,6 +484,7 @@ export const editSkill = createAsyncThunk(
       } else {
           console.log(data);
           
+        handleUnauthorized(response?.status);
         return thunkAPI.rejectWithValue(data);
       }
     } catch (e) {
@@ -492,6 +509,7 @@ export const editEducation = createAsyncThunk(
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
+          ...authHeaders(),
         },
         body : JSON.stringify(obj)
       });
@@ -505,6 +523,7 @@ export const editEducation = createAsyncThunk(
       } else {
           console.log(data);
           
+        handleUnauthorized(response?.status);
         return thunkAPI.rejectWithValue(data);
       }
     } catch (e) {
@@ -530,6 +549,7 @@ export const editExperience = createAsyncThunk(
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
+          ...authHeaders(),
         },
         body : JSON.stringify(obj)
       });
@@ -543,6 +563,7 @@ export const editExperience = createAsyncThunk(
       } else {
           console.log(data);
           
+        handleUnauthorized(response?.status);
         return thunkAPI.rejectWithValue(data);
       }
     } catch (e) {
@@ -571,6 +592,7 @@ export const addProjects = createAsyncThunk(
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
+          ...authHeaders(),
         },
         body : JSON.stringify(obj)
       });
@@ -584,6 +606,7 @@ export const addProjects = createAsyncThunk(
       } else {
           console.log(data);
           
+        handleUnauthorized(response?.status);
         return thunkAPI.rejectWithValue(data);
       }
     } catch (e) {
@@ -609,6 +632,7 @@ export const addSkills = createAsyncThunk(
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
+          ...authHeaders(),
         },
         body : JSON.stringify(obj)
       });
@@ -622,6 +646,7 @@ export const addSkills = createAsyncThunk(
       } else {
           console.log(data);
           
+        handleUnauthorized(response?.status);
         return thunkAPI.rejectWithValue(data);
       }
     } catch (e) {
@@ -646,6 +671,7 @@ export const addEducation = createAsyncThunk(
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
+          ...authHeaders(),
         },
         body : JSON.stringify(obj)
       });
@@ -659,6 +685,7 @@ export const addEducation = createAsyncThunk(
       } else {
           console.log(data);
           
+        handleUnauthorized(response?.status);
         return thunkAPI.rejectWithValue(data);
       }
     } catch (e) {
@@ -683,6 +710,7 @@ export const addExperience = createAsyncThunk(
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
+          ...authHeaders(),
         },
         body : JSON.stringify(obj)
       });
@@ -696,6 +724,7 @@ export const addExperience = createAsyncThunk(
       } else {
           console.log(data);
           
+        handleUnauthorized(response?.status);
         return thunkAPI.rejectWithValue(data);
       }
     } catch (e) {

@@ -27,11 +27,10 @@ const SkillsBox = ({icon , language}) => {
     <section className="skills" >
         <div className="counter">
 
-                {skills.map((ele)=>{
+                {skills?.map((ele)=>{
                     return (
-                        <div className="box">
-                        <div key={ele.id}>
-                        {/* <span><i className="fa-solid fa-c"></i></span> */}
+                        <div className="box" key={ele._id || ele.name}>
+                        <div>
                         <span>{getLanguageIcons(ele?.logo)}</span>
                         <h3>{ele.name}</h3>
                         </div>
@@ -41,44 +40,44 @@ const SkillsBox = ({icon , language}) => {
                 })}
              
 
-            {/* <div class="box">
-                <span><i class="fa-solid fa-c">++</i></span>
+            {/* <div className="box">
+                <span><i className="fa-solid fa-c">++</i></span>
                 <h3>C++ Language</h3>
             </div>
 
-            <div class="box">
-                <span><i class="fa-brands fa-html5"></i></span>
+            <div className="box">
+                <span><i className="fa-brands fa-html5"></i></span>
                 <h3>HTML</h3>
             </div>
 
-            <div class="box">
-                <span><i class="fa-brands fa-css3-alt"></i></span>
+            <div className="box">
+                <span><i className="fa-brands fa-css3-alt"></i></span>
                 <h3>CSS</h3>
             </div>
-            <div class="box">
-                <span><i class="fa-brands fa-js"></i></span>
+            <div className="box">
+                <span><i className="fa-brands fa-js"></i></span>
                 <h3>Javascript</h3>
             </div>
 
-            <div class="box">
-                <span><i class="fa-brands fa-react"></i></span>
+            <div className="box">
+                <span><i className="fa-brands fa-react"></i></span>
                 <h3>React.js</h3>
             </div>
-            <div class="box">
-                <span><i class="fa-brands fa-node"></i></span>
+            <div className="box">
+                <span><i className="fa-brands fa-node"></i></span>
                 <h3>Node.js</h3>
             </div>
            
-            <div class="box">
-                <span><i class="fa-solid fa-database"></i></span>
+            <div className="box">
+                <span><i className="fa-solid fa-database"></i></span>
                 <h3>MongoDB</h3>
             </div>
-            <div class="box">
-                <span><i class="fa-brands fa-git-alt"></i></span>
+            <div className="box">
+                <span><i className="fa-brands fa-git-alt"></i></span>
                 <h3>Git</h3>
             </div>
-            <div class="box">
-                <span> <i class="fa-brands fa-github"></i>
+            <div className="box">
+                <span> <i className="fa-brands fa-github"></i>
                 </span>
                 <h3>Github</h3>
             </div> */}

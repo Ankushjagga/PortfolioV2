@@ -1,9 +1,15 @@
+const crypto = require("crypto")
 const educationModel = require("../models/Education")
 const experienceModel = require("../models/Experience")
 const messagesModel = require("../models/Messages")
 const projectModel = require("../models/Projects")
 const SkillsModel = require("../models/Skills")
 const User = require("../models/user")
+
+const EMAIL_REGEX = /^[^s@]+@[^s@]+.[^s@]+$/;
+const MAX_MESSAGE_LENGTH = 2000;
+const MAX_NAME_LENGTH = 100;
+
 
 
 
@@ -139,9 +145,25 @@ const addMessages = async (req,res)=>{
     }
 
 try {
-    const {email, name} = req.body;
-    const data = await User.findOne({email});
-    const defaultPassword = "123456"
+    const {email, name, message : messageText} = req.body;
+
+    if(!email || !name || !messageText){
+        resObj.message = "Name, email and message are required"
+        return res.status(400).send(resObj)
+    }
+    if(!EMAIL_REGEX.test(email)){
+        resObj.message = "Enter a valid email"
+        return res.status(400).send(resObj)
+    }
+    if(String(name).length > MAX_NAME_LENGTH || String(messageText).length > MAX_MESSAGE_LENGTH){
+        resObj.message = "Name or message is too long"
+        return res.status(400).send(resObj)
+    }
+
+    const data = await User.findOne({email : String(email).toLowerCase()});
+    // Visitors never log in, so give the placeholder account an unguessable
+    // password instead of a shared literal one.
+    const defaultPassword = crypto.randomBytes(32).toString("hex")
     if(!data){
        const userdata =  await new User(
             {
@@ -164,7 +186,7 @@ try {
             await message.save()
         }
         resObj.isSuccess = true
-        resObj.data = userdata
+        resObj.data = null
         resObj.message = "message send sucessfully"
         return res.status(200).send(resObj)
     }

@@ -1,7 +1,7 @@
-import React, { lazy } from 'react'
+import React from 'react'
+import { Route, Routes } from 'react-router-dom'
 import Home from '../Pages/Home'
 import About from '../Pages/About'
-import { Route, Routes } from 'react-router-dom'
 import Projects from '../Pages/Projects'
 import Experience from '../Pages/Experience'
 import Skills from '../Pages/Skills'
@@ -9,6 +9,7 @@ import Education from '../Pages/Education'
 import Contact from '../Pages/Contact'
 import Error from '../Pages/Error'
 import Login from '../Pages/Login'
+import AdminRoute from './AdminRoute'
 import AdminDashboard from '../Pages/Admin/AdminDashboard'
 import AdminProjects from '../Pages/Admin/AdminProjects'
 import AdminSkills from '../Pages/Admin/AdminSkills'
@@ -24,60 +25,40 @@ import AddEducation from '../Pages/Admin/AddEducation'
 import EditExperience from '../Pages/Admin/EditExperience'
 import AddExperience from '../Pages/Admin/AddExperience'
 
-// const Home  = lazy(()=> import ("../Pages/Home"))
-// const About  = lazy(()=> import ("../Pages/About"))
-// const Projects  = lazy(()=> import ("../Pages/Projects"))
-// const Experience  = lazy(()=> import ("../Pages/Experience"))
-// const Skills  = lazy(()=> import ("../Pages/Skills"))
-// const Education  = lazy(()=> import ("../Pages/Education"))
-// const Contact  = lazy(()=> import ("../Pages/Contact"))
-// const Error  = lazy(()=> import ("../Pages/Error"))
-
-// const mainRoutes = [
-//   {
-//     path: '/',
-//     element: <Layout />,
-//     children: [
-//       { path: '/', element: <Home /> },
-//       { path: '#about', element: <About /> },
-      
-//     ],
-//   },
-// ]
-const MainRoutes = () =>{
+const MainRoutes = () => {
   return (
-    <>
     <Routes>
-      <Route path='/' element = {<Home/>}/>
-      <Route path='/about' element = {<About/>}/>
-      <Route path='/projects' element = {<Projects/>}/>
-      <Route path='/experience' element = {<Experience/>}/>
-      <Route path='/skills' element = {<Skills/>}/>
-      <Route path='/education' element = {<Education/>}/>
-      <Route path='/contact' element = {<Contact/>}/>
-      <Route path='/login' element = {<Login/>}/>
-      <Route path='/adminDashboard' element = {<AdminDashboard/>}/>
-      <Route path='/adminProjects' element = {<AdminProjects/>}/>
-      <Route path='/editProject/:id' element = {<EditProjects/>}/>
-      <Route path='/adminSkills' element = {<AdminSkills/>}/>
-      <Route path='/editSkill/:id' element = {<EditSkills/>}/>
-      <Route path='/editEducation/:id' element = {<EditEducation/>}/>
-      <Route path='/editExperience/:id' element = {<EditExperience/>}/>
+      {/* public */}
+      <Route path='/' element={<Home />} />
+      <Route path='/about' element={<About />} />
+      <Route path='/projects' element={<Projects />} />
+      <Route path='/experience' element={<Experience />} />
+      <Route path='/skills' element={<Skills />} />
+      <Route path='/education' element={<Education />} />
+      <Route path='/contact' element={<Contact />} />
+      <Route path='/login' element={<Login />} />
 
-      <Route path='/adminEducation' element = {<AdminEducation/>}/>
-      <Route path='/adminExperience' element = {<AdminExperience/>}/>
-      <Route path='/adminMessages' element = {<AdminMessages/>}/>
-      <Route path='/addProject' element = {<AddProject/>}/>
-      <Route path='/addSkill' element = {<AddSkill/>}/>
-      <Route path='/addEducation' element = {<AddEducation/>}/>
-      <Route path='/addExperience' element = {<AddExperience/>}/>
-      <Route path='*' element = {<Error/>}/>
+      {/* admin — AdminRoute redirects to /login when there is no admin session */}
+      <Route element={<AdminRoute />}>
+        <Route path='/adminDashboard' element={<AdminDashboard />} />
+        <Route path='/adminProjects' element={<AdminProjects />} />
+        <Route path='/adminSkills' element={<AdminSkills />} />
+        <Route path='/adminEducation' element={<AdminEducation />} />
+        <Route path='/adminExperience' element={<AdminExperience />} />
+        <Route path='/adminMessages' element={<AdminMessages />} />
+        <Route path='/addProject' element={<AddProject />} />
+        <Route path='/addSkill' element={<AddSkill />} />
+        <Route path='/addEducation' element={<AddEducation />} />
+        <Route path='/addExperience' element={<AddExperience />} />
+        <Route path='/editProject/:id' element={<EditProjects />} />
+        <Route path='/editSkill/:id' element={<EditSkills />} />
+        <Route path='/editEducation/:id' element={<EditEducation />} />
+        <Route path='/editExperience/:id' element={<EditExperience />} />
+      </Route>
 
+      <Route path='*' element={<Error />} />
     </Routes>
-    </>
   )
 }
-
-
 
 export default MainRoutes

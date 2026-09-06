@@ -145,15 +145,15 @@ break;
             {experience && experience?.length && (
                 experience?.map((project, index) => (
                     <tr key={project._id}>
-                        <td>{index + 1}</td>
-                        <td>{project.company}</td>
-                        <td><img src= {project?.image} className="dash-img"  alt={project?.school} /></td>
-                        <td>{project.role}</td>
-                        <td>{project.description.map((ele)=> <ul><li>{ele.slice(0,70)}</li></ul>)}</td>
-                        <td>{moment(project.startDate).format("MMM YYYY")}</td>
-                        <td>{project.endDate ?  moment(project.endDate).format("MMM YYYY") : "currently working"}</td>
-                        <td onClick={()=> handleEdit(project , "experience")}><i class="fa-solid fa-pencil" style={{cursor : "pointer"}}></i></td>
-                        <td onClick={()=> handleDelete(project , "experience")}><i class="fa-solid fa-trash" style={{cursor : "pointer"}}></i></td>
+                        <td data-label="S. No.">{index + 1}</td>
+                        <td data-label="Company">{project.company}</td>
+                        <td data-label="Image"><img src= {project?.image} className="dash-img"  alt={project?.school} /></td>
+                        <td data-label="Role">{project.role}</td>
+                        <td data-label="Description"><ul>{project.description.map((ele, i)=> <li key={i}>{ele.slice(0,70)}</li>)}</ul></td>
+                        <td data-label="startDate">{moment(project.startDate).format("MMM YYYY")}</td>
+                        <td data-label="endDate">{project.endDate ?  moment(project.endDate).format("MMM YYYY") : "currently working"}</td>
+                        <td data-label="Action" onClick={()=> handleEdit(project , "experience")}><i className="fa-solid fa-pencil" style={{cursor : "pointer"}}></i></td>
+                        <td data-label="Action" onClick={()=> handleDelete(project , "experience")}><i className="fa-solid fa-trash" style={{cursor : "pointer"}}></i></td>
                        
 
                     </tr>

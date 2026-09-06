@@ -1,104 +1,121 @@
-import React , {useEffect, useState} from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
-import { NavHashLink } from 'react-router-hash-link';
+import React, { useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom'
 import "./Header.css"
 import Resume from "../../assests/AnkushKumarJagga.pdf"
+
+const SECTIONS = [
+  { id: "home", label: "Home", icon: "fa-solid fa-house" },
+  { id: "about", label: "About Me", icon: "fa-solid fa-address-card" },
+  { id: "projects", label: "Projects", icon: "fa-solid fa-diagram-project" },
+  { id: "experience", label: "Experience", icon: "fa-solid fa-brain" },
+  { id: "skills", label: "Skills", icon: "fa-solid fa-user" },
+  { id: "education", label: "Education", icon: "fa-solid fa-graduation-cap" },
+  { id: "contactss", label: "Contact", icon: "fa-solid fa-phone" },
+]
+
 const Header = () => {
-  const location = useLocation()
-  
-  const [activeSection , setActiveSection] = useState("")
-    //   const navigation = [
-    //     {
-    //       to: "#home",
-    //       name: "Home",
-    //       icon:  <i className="fa-solid fa-house"></i>,
-    //     },
-    //     {
-    //       to: "#about",
-    //       name: "About Me",
-    //       icon: <i className="fa-solid fa-address-card"></i>,
-    //     },
-    //     {
-    //       to: "#projects",
-    //       name: "Projects",
-    //       icon: <i className="fa-solid fa-diagram-project"></i>,
-    //     },
-    //     {
-    //       to: "#experience",
-    //       name: "Experience",
-    //       icon: <i className="fa-solid fa-brain"></i>,
-    //     },
-    //     {
-    //       to: "#skills",
-    //       name: "Skills",
-    //       icon:<i className="fa-solid fa-user"></i>,
-    //     },
-    //     {
-    //       to: "#education",
-    //       name: "Education",
-    //       icon: <i class="fa-solid fa-graduation-cap"></i>,
-    //     },
-    // ]
+  const [activeSection, setActiveSection] = useState("home")
+  const [menuOpen, setMenuOpen] = useState(false)
 
-    // useEffect(() => {
-    //   setActiveSection(location.hash);
-      
-    // }, [location]);
-    // console.log(activeSection , "saddas");
-    
-    const handleScroll = (id) =>{
-      document
-      .getElementById(id)
-      .scrollIntoView({ behavior: 'smooth' });
-      setActiveSection(id)
+  // Highlight whichever section is currently in view, not just the last one
+  // that was clicked.
+  useEffect(() => {
+    const targets = SECTIONS
+      .map(({ id }) => document.getElementById(id))
+      .filter(Boolean)
+
+    if (!targets.length) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
+        if (visible) setActiveSection(visible.target.id)
+      },
+      { rootMargin: "-45% 0px -45% 0px", threshold: [0, 0.25, 0.5, 1] }
+    )
+
+    targets.forEach((target) => observer.observe(target))
+    return () => observer.disconnect()
+  }, [])
+
+  // Stop the page behind the drawer from scrolling, and let Escape close it.
+  useEffect(() => {
+    if (!menuOpen) return
+
+    const onKeyDown = (e) => { if (e.key === "Escape") setMenuOpen(false) }
+    document.body.style.overflow = "hidden"
+    window.addEventListener("keydown", onKeyDown)
+
+    return () => {
+      document.body.style.overflow = ""
+      window.removeEventListener("keydown", onKeyDown)
     }
-    const handleDownload = ()=>{
-      // alert("This is an Old Resume , will Create new One Soon... 😁");
-      window.open(Resume, "_blank")
-    }
+  }, [menuOpen])
+
+  const handleScroll = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    setActiveSection(id)
+    setMenuOpen(false)
+  }
+
+  const handleDownload = () => {
+    window.open(Resume, "_blank", "noopener")
+    setMenuOpen(false)
+  }
+
   return (
-    <div className='nav'>
-    <NavLink to="/"> <h4 className={`logoNav`} >  AJ</h4></NavLink>
-    <li  className = {`headerNav ${activeSection === "home" ? "active" : ""}`} onClick={() => {
-            handleScroll("home")
-          }}><i className="fa-solid fa-house"></i> Home</li>
-            <li  className = {`headerNav ${activeSection === "about" ? "active" : ""}`} onClick={() => {
-           handleScroll("about")
-          }}><i className="fa-solid fa-address-card"></i> About Me</li>
-      <li className = {`headerNav ${activeSection === "projects" ? "active" : ""}`}  onClick={() => {
-           handleScroll("projects")
-          }}><i className="fa-solid fa-diagram-project"></i> Projects</li>
-           <li className = {`headerNav ${activeSection === "experience" ? "active" : ""}`}  onClick={() => {
-           handleScroll("experience")
-          }}><i className="fa-solid fa-brain"></i> Experience</li>
-           <li className = {`headerNav ${activeSection === "skills" ? "active" : ""}`}  onClick={() => {
-           handleScroll("skills")
-          }}><i className="fa-solid fa-user"></i> Skills</li>
-           <li  className = {`headerNav ${activeSection === "education" ? "active" : ""}`} onClick={() => {
-           handleScroll("education")
-          }}><i class="fa-solid fa-graduation-cap"></i> Education</li> 
-          <li  className = {`headerNav ${activeSection === "contactss" ? "active" : ""}`} onClick={() => {
-           handleScroll("contactss")
-          }}><i class="fa-solid fa-phone"></i> Contact</li>
-    <li className={`headerNav ${activeSection === "resume" ? "active" : ""}`} onClick={handleDownload}><i className="fa-solid fa-download"></i>   Resume</li>
+    <header className='navWrap'>
+      <nav className='nav'>
+        <NavLink to="/" className='logoLink' aria-label='Home'>
+          <span className='logoNav'>AJ</span>
+        </NavLink>
 
-    {/* {navigation.map(nav=>{
-      console.log(activeSection === nav.to);
-      
-      return (
-        <NavHashLink 
-        smooth 
-        to={nav.to}
-        key={nav.name}
-        className={`headerNav ${activeSection === nav.to ? 'actives' : ""}`}
+        {/* The bars are drawn in CSS on purpose: an icon-font glyph leaves an
+            invisible button if the Font Awesome kit is slow or blocked. */}
+        <button
+          type='button'
+          className={`navToggle ${menuOpen ? "isOpen" : ""}`}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          aria-controls='primary-navigation'
+          onClick={() => setMenuOpen((open) => !open)}
         >
-         {nav.icon}
-          {nav.name}
-        </NavHashLink>
-      )
-    })} */}
-  
-    </div>
+          <span className='navToggleBars' aria-hidden='true'></span>
+        </button>
+
+        <ul
+          id='primary-navigation'
+          className={`navList ${menuOpen ? "isOpen" : ""}`}
+        >
+          {SECTIONS.map(({ id, label, icon }) => (
+            <li key={id}>
+              <button
+                type='button'
+                className={`headerNav ${activeSection === id ? "active" : ""}`}
+                onClick={() => handleScroll(id)}
+              >
+                <i className={icon} aria-hidden='true'></i> {label}
+              </button>
+            </li>
+          ))}
+          <li>
+            <button type='button' className='headerNav' onClick={handleDownload}>
+              <i className="fa-solid fa-download" aria-hidden='true'></i> Resume
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+      {menuOpen && (
+        <div
+          className='navBackdrop'
+          onClick={() => setMenuOpen(false)}
+          aria-hidden='true'
+        />
+      )}
+    </header>
   )
 }
 

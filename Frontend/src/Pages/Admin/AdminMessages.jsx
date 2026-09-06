@@ -120,13 +120,13 @@ useEffect(() => {
     </thead>
         {messages && messages?.length ? (
           messages?.map((message, index) => (
-              <tbody>
-                <tr key={message._id}>
-                    <td>{index + 1}</td>
-                    <td>{message.userId.name}</td>
-                    <td>{message.userId.email}</td>
-                    <td> {message.message} </td>
-                    <td onClick={()=> handleDelete(message , "message")}><i class="fa-solid fa-trash" style={{cursor : "pointer"}}></i></td>
+              <tbody key={message._id}>
+                <tr>
+                    <td data-label="S. No.">{index + 1}</td>
+                    <td data-label="Name">{message.userId.name}</td>
+                    <td data-label="email">{message.userId.email}</td>
+                    <td data-label="Message"> {message.message} </td>
+                    <td data-label="Action" onClick={()=> handleDelete(message , "message")}><i className="fa-solid fa-trash" style={{cursor : "pointer"}}></i></td>
                    
 
                 </tr>

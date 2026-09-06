@@ -1,78 +1,319 @@
-.headerNav ,  .logoNav{
-    margin: 1rem;
-    padding: .5rem;
-    list-style: none;
-    font-size: 1.5rem;
-    
+/* ==========================================================================
+   Public site navigation
+
+   .navWrap is deliberately static with no z-index. Making the wrapper a
+   stacking context traps the fixed-position drawer and backdrop inside it,
+   so they can never paint above the rest of the page.
+   ========================================================================== */
+.navWrap {
+    position: relative;
 }
-.headerNav:hover , .active{
-    color: var(--rootColor);
-}
-.logoNav{
-    color: var(--rootColor);
-    font-size: 2.5rem;
-}
-.nav{
+
+/* Layering, lowest to highest: page < backdrop (999) < drawer (1000) < bar (1001).
+   The bar must outrank the backdrop or the backdrop swallows clicks on the
+   close button; the drawer's top padding is what clears the bar visually. */
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 1001;
     display: flex;
-    justify-content: space-evenly;
     align-items: center;
-    text-align: center;
-    padding: 2rem;
-    background-color: #000;
-    background-color: rgb(0 0 0 / var(.2));
-   position: sticky;
-   top: 0;
-   z-index: 100;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem var(--pagePadding);
+    border-bottom: 1px solid var(--border);
 }
-.title{
-    display :flex;
+
+/* The frosted bar lives on a pseudo-element, NOT on .nav itself.
+   backdrop-filter turns an element into the containing block for its
+   fixed-position descendants — with it on .nav, the drawer sized itself
+   against the 60px bar instead of the viewport and collapsed to its padding. */
+.nav::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: rgba(0, 0, 0, .85);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+}
+
+.logoLink {
+    flex: 0 0 auto;
+}
+
+.logoNav {
+    color: var(--accent);
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: .05em;
+}
+
+.navList {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: clamp(.2rem, .8vw, .8rem);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Nav items are real buttons so they are keyboard reachable. */
+.headerNav {
+    background: none;
+    color: inherit;
+    padding: .8rem 1rem;
+    border-radius: .8rem;
+    font-size: clamp(1.2rem, .9rem + .4vw, 1.5rem);
+    font-family: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.headerNav:hover {
+    color: var(--accent);
+    background: rgba(194, 137, 199, .1);
+}
+
+.headerNav.active {
+    color: var(--accent);
+    background: rgba(194, 137, 199, .16);
+}
+
+.fa-solid {
+    margin: 0 .2rem;
+}
+
+/* ==========================================================================
+   Hamburger — drawn in CSS so it never depends on an icon font loading
+   ========================================================================== */
+.navToggle {
+    display: none;
+    background: none;
+    color: var(--text);
+    width: 4.4rem;
+    height: 4.4rem;
+    padding: 0;
+    cursor: pointer;
+    border-radius: .8rem;
+    border: 1px solid var(--border);
+    align-items: center;
     justify-content: center;
-    align-items: center; 
-    text-align: center;
- }
+    flex: 0 0 auto;
+    /* The drawer is a sibling inside .nav, so a positive z-index there paints
+       over this button. Lift the toggle above it or the X becomes unclickable. */
+    position: relative;
+    z-index: 1002;
+}
+
+.navToggle:hover {
+    background: rgba(194, 137, 199, .12);
+    border-color: var(--border-strong);
+}
+
+/* Middle bar is the element itself; the other two are its pseudo-elements. */
+.navToggleBars,
+.navToggleBars::before,
+.navToggleBars::after {
+    display: block;
+    width: 2.2rem;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+    transition: transform .2s ease, opacity .2s ease;
+}
+
+.navToggleBars {
+    position: relative;
+}
+
+.navToggleBars::before,
+.navToggleBars::after {
+    content: "";
+    position: absolute;
+    left: 0;
+}
+
+.navToggleBars::before { top: -7px; }
+.navToggleBars::after { top: 7px; }
+
+/* Collapse the bars into an X while the drawer is open. */
+.navToggle.isOpen .navToggleBars {
+    background: transparent;
+}
+
+.navToggle.isOpen .navToggleBars::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.navToggle.isOpen .navToggleBars::after {
+    top: 0;
+    transform: rotate(-45deg);
+}
+
+.navBackdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .6);
+    z-index: 999;
+}
+
+/* ==========================================================================
+   Admin navigation
+   ========================================================================== */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem var(--pagePadding);
     background-color: #000;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
 
+.title {
+    display: flex;
+    align-items: center;
 }
-.fa-solid{
-    margin: 0 1rem;
+
+.adminLinkss {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .4rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
-.navLinks{
+
+.adminLinkss li {
+    list-style: none;
+}
+
+.adminPanel {
+    font-size: clamp(1.4rem, 1.1rem + .6vw, 1.8rem);
+    margin: 0;
+    color: var(--text-muted);
+    letter-spacing: .1em;
+}
+
+.navLinks {
     text-decoration: none;
     list-style: none;
 }
-.adminPanel{
-    font-size: 2rem;
-    margin:  2.5rem;
-}
 
-.nav-link{
+.nav-link {
     color: #fff;
-    margin: 0 2rem 0 0;
 }
-.nav-lin{
-    color: #fff!important;
-    margin: 0 2rem 0 0;
-}
-.lin{
-    margin: 0 4rem 0 0;
-    cursor: pointer;
-    /* color: var(--rootColor); */
-    list-style: none;
-    font-size: 1.5rem;
-    background-color: var(--rootColor);
-    padding: 1rem;
-    border-radius: 3rem;
 
+.nav-lin {
+    color: #fff !important;
 }
-.lin:hover, .nav-link:hover{
-    color: black!important;
+
+.lin {
+    cursor: pointer;
+    list-style: none;
+    font-size: 1.4rem;
+    background-color: var(--accent-soft);
+    color: #16121a;
+    padding: .9rem 2rem;
+    border-radius: 3rem;
+    margin: 0;
+    font-weight: 600;
 }
-.adminLinkss{
-display: flex;
-justify-content: center;
-align-items: center;
+
+.lin:hover {
+    background-color: var(--accent);
+    color: #16121a !important;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 900px) {
+    .navToggle {
+        display: inline-flex;
+    }
+
+    /* Off-canvas drawer. z-index sits above the backdrop and the sticky bar. */
+    .navList {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: min(78vw, 30rem);
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        gap: .4rem;
+        padding: 8rem 1.6rem 2rem;
+        background: #0d0d10;
+        border-left: 1px solid var(--border);
+        box-shadow: -1rem 0 3rem rgba(0, 0, 0, .5);
+        transform: translateX(105%);
+        /* visibility flips discretely at the end of the slide-out, which keeps
+           the closed drawer out of the tab order without cutting the animation */
+        transition: transform .25s ease, visibility .25s;
+        overflow-y: auto;
+        z-index: 1000;
+        visibility: hidden;
+    }
+
+    .navList.isOpen {
+        transform: translateX(0);
+        visibility: visible;
+    }
+
+    .navList li {
+        width: 100%;
+    }
+
+    .headerNav {
+        width: 100%;
+        justify-content: flex-start;
+        font-size: 1.6rem;
+        padding: 1.2rem 1.4rem;
+        min-height: 4.4rem;
+    }
+
+    .adminLinkss {
+        order: 3;
+        width: 100%;
+        justify-content: flex-start;
+        overflow-x: auto;
+        scrollbar-width: none;
+        padding-bottom: .4rem;
+    }
+
+    .adminLinkss::-webkit-scrollbar {
+        display: none;
+    }
+
+    .adminLinkss .headerNav {
+        width: auto;
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .adminPanel {
+        font-size: 1.3rem;
+    }
+
+    .lin {
+        padding: .8rem 1.6rem;
+        font-size: 1.3rem;
+    }
 }

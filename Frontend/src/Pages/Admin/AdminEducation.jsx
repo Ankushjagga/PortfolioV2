@@ -145,15 +145,15 @@ break;
             {education && education?.length && (
                 education?.map((project, index) => (
                     <tr key={project._id}>
-                        <td>{index + 1}</td>
-                        <td>{project.school}</td>
-                        <td><img src= {project?.image} className="dash-img"  alt={project?.school} /></td>
-                        <td>{project.specialization}</td>
-                        <td>{project.description.slice(0,100) + "..."}</td>
-                        <td>{moment(project.startDate).format("MMM YYYY")}</td>
-                        <td>{moment(project.endDate).format("MMM YYYY")}</td>
-                        <td onClick={()=> handleEdit(project , "education")}><i class="fa-solid fa-pencil" style={{cursor : "pointer"}}></i></td>
-                        <td onClick={()=> handleDelete(project , "education")}><i class="fa-solid fa-trash" style={{cursor : "pointer"}}></i></td>
+                        <td data-label="S. No.">{index + 1}</td>
+                        <td data-label="School">{project.school}</td>
+                        <td data-label="Image"><img src= {project?.image} className="dash-img"  alt={project?.school} /></td>
+                        <td data-label="Specialization">{project.specialization}</td>
+                        <td data-label="Description">{project.description.slice(0,100) + "..."}</td>
+                        <td data-label="startDate">{moment(project.startDate).format("MMM YYYY")}</td>
+                        <td data-label="endDate">{moment(project.endDate).format("MMM YYYY")}</td>
+                        <td data-label="Action" onClick={()=> handleEdit(project , "education")}><i className="fa-solid fa-pencil" style={{cursor : "pointer"}}></i></td>
+                        <td data-label="Action" onClick={()=> handleDelete(project , "education")}><i className="fa-solid fa-trash" style={{cursor : "pointer"}}></i></td>
                        
 
                     </tr>

@@ -1,64 +1,63 @@
 import React from 'react'
 import "./Header.css"
-import { NavLink, useLocation , useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
-import Cookies from "js-cookie";
+import { NavLink, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import { clearSession, getRole, getToken } from '../../Utilis/api';
 import { clearAllSliceStates, logout } from '../../redux/authSlice';
 
+const ADMIN_LINKS = [
+  { to: "/adminProjects", label: "Projects", icon: "fa-solid fa-diagram-project" },
+  { to: "/adminSkills", label: "Skills", icon: "fa-solid fa-user" },
+  { to: "/adminMessages", label: "Messages", icon: "fa-solid fa-phone" },
+  { to: "/adminEducation", label: "Education", icon: "fa-solid fa-graduation-cap" },
+  { to: "/adminExperience", label: "Experience", icon: "fa-solid fa-brain" },
+]
 
 const AdminHeader = () => {
-    const token = Cookies.get("token");
-const role  = Cookies.get("role")
-    const dispatch = useDispatch()
-const navigate = useNavigate()
-const handleLogout = ()=>{
-// Get an array of all cookie names
-var allCookies = Object.keys(Cookies.get());
+  const token = getToken();
+  const role = getRole();
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-// Loop through the cookie names and remove each cookie
-allCookies.forEach(function (cookieName) {
-  Cookies.remove(cookieName);
-});
-dispatch(logout());
-dispatch(clearAllSliceStates())
-navigate("/login");
-toast.success("logout Sucessfully !", {
-  position: "top-right",
-  autoClose: 5000,
-  hideProgressBar: false,
-  closeOnClick: true,
-  pauseOnHover: true,
-  draggable: true,
-  progress: undefined,
-  theme: "light",
-  });
-
-
-}
-  return (
-    <div className='navbar'>
-
-    <div className='title'>
-    
-    <NavLink to="/adminDashboard"> <h4 className={`logoNav`} >  AJ</h4></NavLink>
-    </div>
-
-    <div className='adminLinkss'>
-    <NavLink to="/adminProjects" className={"headerNav"}> <li><i className="fa-solid fa-diagram-project"></i> Projects</li></NavLink>
-    <NavLink to="/adminSkills" className={"headerNav"}> <li  ><i className="fa-solid fa-user"></i> Skills</li></NavLink>
-    <NavLink to="/adminMessages" className={"headerNav"}> <li  ><i class="fa-solid fa-phone"></i> Messages</li></NavLink>
-    <NavLink to="/adminEducation" className={"headerNav"}> <li  ><i class="fa-solid fa-graduation-cap"></i> Education</li></NavLink>
-    <NavLink to="/adminExperience" className={"headerNav"}> <li  ><i className="fa-solid fa-brain"></i> Experience</li></NavLink>
-    </div>
-    
-    
-    {token && role ==="admin" ? 
-      <li className= 'nav-link lin' onClick={handleLogout}>Logout</li> 
-    :
-      <h3 className='adminPanel'>ADMIN PANEL</h3>
+  const handleLogout = () => {
+    clearSession();
+    dispatch(logout());
+    dispatch(clearAllSliceStates());
+    navigate("/login");
+    toast.success("logout Sucessfully !", {
+      position: "top-right",
+      autoClose: 5000,
+      theme: "light",
+    });
   }
-  </div>
+
+  return (
+    <nav className='navbar'>
+      <div className='title'>
+        <NavLink to="/adminDashboard" aria-label='Admin dashboard'>
+          <span className='logoNav'>AJ</span>
+        </NavLink>
+      </div>
+
+      <ul className='adminLinkss'>
+        {ADMIN_LINKS.map(({ to, label, icon }) => (
+          <li key={to}>
+            <NavLink
+              to={to}
+              className={({ isActive }) => `headerNav ${isActive ? "active" : ""}`}
+            >
+              <i className={icon}></i> {label}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+
+      {token && role === "admin"
+        ? <button type='button' className='nav-link lin' onClick={handleLogout}>Logout</button>
+        : <h3 className='adminPanel'>ADMIN PANEL</h3>
+      }
+    </nav>
   )
 }
 

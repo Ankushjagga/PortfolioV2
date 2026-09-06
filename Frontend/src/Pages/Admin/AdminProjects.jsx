@@ -144,12 +144,12 @@ break;
             {projects && projects?.length && (
                 projects?.map((project, index) => (
                     <tr key={project._id}>
-                        <td>{index + 1}</td>
-                        <td>{project.name}</td>
-                        <td><img src= {project?.image} className="dash-img"  alt={project?.name} /></td>
-                        <td>{project.description.slice(0,100) + "..."}</td>
-                        <td onClick={()=> handleEdit(project , "project")}><i class="fa-solid fa-pencil" style={{cursor : "pointer"}}></i></td>
-                        <td onClick={()=> handleDelete(project , "project")}><i class="fa-solid fa-trash" style={{cursor : "pointer"}}></i></td>
+                        <td data-label="S. No.">{index + 1}</td>
+                        <td data-label="Name">{project.name}</td>
+                        <td data-label="Image"><img src= {project?.image} className="dash-img"  alt={project?.name} /></td>
+                        <td data-label="Description">{project.description.slice(0,100) + "..."}</td>
+                        <td data-label="Action" onClick={()=> handleEdit(project , "project")}><i className="fa-solid fa-pencil" style={{cursor : "pointer"}}></i></td>
+                        <td data-label="Action" onClick={()=> handleDelete(project , "project")}><i className="fa-solid fa-trash" style={{cursor : "pointer"}}></i></td>
                        
 
                     </tr>

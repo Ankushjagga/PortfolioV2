@@ -9,6 +9,7 @@ import useFileUpload from '../../CustomHooks/useFileUpload'
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Select from "react-select"
+import selectStyles from "../../Utilis/selectStyles"
 import { iconsOption } from '../../Utilis/Utilis'
 import { Navigate, useNavigate } from 'react-router-dom'
 
@@ -166,10 +167,10 @@ console.log(inputMessage);
         {isFileUploading && <h3 style={{display :  isFileUploading ? "visible" : "none" }}>File uploading plese wait ...</h3>}
         {inputMessage.image && <p className='imageView'>Current Image: <a href={inputMessage.image} target="_blank" rel="noopener noreferrer">View Image</a></p>}
         
-        <label for="skills" className='visible'>Skills <span className={"impRed"}> *</span></label>
-        <Select  isMulti options={iconsOption} onChange={skillSelect} className='select'/>
-        <label for="message" className='visible'>Description <span className={"impRed"}> *</span></label>
-        <textarea  className={"inputBox"} onChange={handleInput} name='description' cols={10} rows={6} value={inputMessage.description} />
+        <label htmlFor="skills" className='visible'>Skills <span className={"impRed"}> *</span></label>
+        <Select styles={selectStyles} inputId="skills"  isMulti options={iconsOption} onChange={skillSelect} className='select'/>
+        <label htmlFor="description" className='visible'>Description <span className={"impRed"}> *</span></label>
+        <textarea id='description' className={"inputBox"} onChange={handleInput} name='description' cols={10} rows={6} value={inputMessage.description} />
            <span className='FormError'>  {error.description ? error.description : ""}</span>
         </span>
         <button className='btn contactBtn' disabled ={isUserSliceFetchingSmall} onClick={handleSubmit}>Add + {isUserSliceFetchingSmall && <img className='upload' src={smalluploadLoader} alt='uploading...'/>} </button>

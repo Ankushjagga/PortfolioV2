@@ -15,12 +15,14 @@ const Projects = () => {
     //     }
     // }, [projects])
     const getLanguageIcons = (skills) =>{
-        const icons = skills.map(skill => {
+        // The icons come from a shared list as bare elements, so clone each one
+        // with a key before rendering them as an array.
+        return (skills || []).map(skill => {
             const found = languages.find(ele => ele.name === skill);
-            return found ? found.icon : null; 
+            return found?.icon
+                ? React.cloneElement(found.icon, { key: skill, title: skill })
+                : null;
         });
-       
-       return icons
     }
  
   return (
@@ -31,12 +33,10 @@ const Projects = () => {
         // console.log(ele.languages);
         
         return (
-          <>
-          <ProjectsBox image={ele?.image} Title={ele?.name} 
-            liveLink={ele?.liveUrl} githubLink={ele?.githubLink} 
-            description={ele?.description} icons={getLanguageIcons(ele?.languages)} className= "project"
-    /> 
-          </>
+          <ProjectsBox key={ele?._id} image={ele?.image} Title={ele?.name}
+            liveLink={ele?.liveUrl} githubLink={ele?.githubLink}
+            description={ele?.description} icons={getLanguageIcons(ele?.languages)} className="project"
+          />
         )
     })}
 
